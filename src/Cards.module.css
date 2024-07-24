@@ -1,0 +1,23 @@
+.cardsContainer {
+    width: 85vw;
+  margin-left: 8rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
+  grid-gap: 1.25rem; 
+
+}
+
+.card {
+    max-width: 14rem;
+    height: fit-content;
+    background-color: rgb(255, 255, 255);
+    border: solid grey;
+    padding: 1rem;
+    margin: 0.5rem;
+    margin-left: 8vw;
+    
+    box-shadow: -10px 1px 6px rgba(0, 0, 0, 0.1), -10px 15px 6px rgba(0, 0, 0, 0.1);
+  
+
+}
