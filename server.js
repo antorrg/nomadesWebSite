@@ -2,6 +2,7 @@ import fs from 'node:fs/promises'
 import express from 'express'
 import morgan from 'morgan'
 import { Transform } from 'node:stream'
+import {sequelize} from './server/database.js'
 import mainRouter from './server/routes/mainRouter.js'
 import eh from './server/middlewares/errorHandlers.js'
 import store from './src/Redux/store.js'
@@ -115,6 +116,11 @@ app.use('*', async (req, res) => {
 
 app.use(eh.errorEndWare)
 // Start http server
-app.listen(port, () => {
+app.listen(port, async() => {
+  try{
+    await sequelize.sync({force:true})
   console.log(`Server started at http://localhost:${port}`)
+  }catch(error){
+    console.error('Error syncing database ', error)
+  }
 })
