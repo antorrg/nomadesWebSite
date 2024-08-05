@@ -1,39 +1,70 @@
 import {
-  PRODUCT,
-  PRODUCT_BY_ID,
-  ITEM,
-  CLEAN_DETAIL,
+    INFO,
+    DETAIL_INFO,
+    CLEAN_DETAIL,
+    SINGLE_PROJECT,
+    USERS,
+    USER_BY_ID,
+
 } from './actions.js'
 
-
+const count= 12;
 
 const initialState = {
-   product: [],
-   productById: [],
-   item : [],
-   loading: true,
+    info :  [],
+    allInfo:[],
+    loading: true,
+    totalPages:1,
+    currentPage:1,
+    singleProject:[],
+    detail:[],
+    users:[],
+    detailUsers:[],
+
+
 };
 
 const rootReducer = (state= initialState, {type, payload})=>{
     switch(type){
-        case PRODUCT :
-            return {
-             product : payload,
-             loading: false,
+        case INFO:
+            return{
+                ...state,
+                info: payload,
+                allInfo: payload,
+                totalPages: Math.ceil(payload.length / count),
+                loading: false,
             }
-        case PRODUCT_BY_ID:
+        
+        case DETAIL_INFO:
             return {
-                productById: payload,
-                loading : false,
+                ...state,
+                detail: payload,
+                loading: false,
             }
+        case SINGLE_PROJECT:
+            return{
+                ...state,
+                singleProject: payload,
+                loading: false,
+            };
         case CLEAN_DETAIL:
             return {
-                productById : payload,
+                ...state,
+                detail: payload,
+                singleProject:payload,
+                detailUsers: payload,
             }
-        case ITEM:
+        case USERS:
             return {
-                item : payload,
-                loading : false,
+                ...state,
+                users: payload,
+                loading:false
+            }
+        case USER_BY_ID:
+            return {
+                ...state,
+                detailUsers: payload,
+                loading: false,
             }
        
         default : 

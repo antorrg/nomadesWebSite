@@ -1,11 +1,11 @@
 import fs from 'node:fs/promises'
 import express from 'express'
-import morgan from 'morgan'
 import { Transform } from 'node:stream'
-import {sequelize} from './server/database.js'
-import mainRouter from './server/routes/mainRouter.js'
-import eh from './server/middlewares/errorHandlers.js'
-import store from './src/Redux/store.js'
+import {sequelize} from './api/db.js'
+import mainRouter from './api/routes/mainRouter.js'
+import errhand from './api/middlewares/middlewares.js'
+import morgan from 'morgan'
+import store from './src/redux/store.js'
 
 // Constants
 const isProduction = process.env.NODE_ENV === 'production'
@@ -41,9 +41,12 @@ if (!isProduction) {
   app.use(compression())
   app.use(base, sirv('./dist/client', { extensions: [] }))
 }
-app.use(express.json())
-app.use(mainRouter)
+app.use(express.json()) // Ejecutar express.json()
+app.use(errhand.validJson)
+app.use('/api',mainRouter)
 
+
+// Serve HTML
 
 app.use('*', async (req, res) => {
   try {
@@ -63,12 +66,11 @@ app.use('*', async (req, res) => {
 
     let didError = false
     const preloadedState = await store.getState();
-    console.log('soy el state',preloadedState)
-     // Inyectar el estado inicial _antes_ de la renderización del servidor  /</g, '\\u003c')
+     // Inyectar el estado inicial _antes_ de la renderización del servidor
      const htmlWithState = template.replace(
       ``,
       `<script>
-        window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')} 
+        window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
       </script>`
     );
     const { pipe, abort } = render(url, ssrManifest, {
@@ -113,14 +115,16 @@ app.use('*', async (req, res) => {
     res.status(500).end(e.stack)
   }
 })
+app.use(errhand.lostRoute)
 
-app.use(eh.errorEndWare)
+app.use(errhand.errorEndWare)
 // Start http server
-app.listen(port, async() => {
-  try{
-    await sequelize.sync({force:true})
-  console.log(`Server started at http://localhost:${port}`)
-  }catch(error){
-    console.error('Error syncing database ', error)
+app.listen(port, async () => {
+  try {
+    await sequelize.sync({force: false})
+    console.log('Database connect succesfully 😉!!')
+    console.log(`Server started at http://localhost:${port}`)
+  } catch (error) {
+    console.error('Error syncing database', error)
   }
 })

@@ -1,18 +1,20 @@
 import axios from 'axios'
-//import setAuthHeader from '../Auth/userComponents/axiosUtils.js'
+import setAuthHeader from '../Auth/userComponents/axiosUtils.js'
 
-export const PRODUCT = 'PRODUCT';
-export const PRODUCT_BY_ID = 'PRODUCT_BY_ID';
-export const ITEM = 'ITEM';
-export const CLEAN_DETAIL = 'CLEAN_DETAIL';
- 
+export const INFO = 'INFO';
+export const DETAIL_INFO = 'DETAIL_INFO'
+export const CLEAN_DETAIL = 'CLEAN_DETAIL'
+export const SINGLE_PROJECT = 'SINGLE_PROJECT'
+export const USERS = 'USERS';
+export const USER_BY_ID= 'USER_BY_ID';
 
-export const getProduct = ()=> async(dispatch) => {
+
+export const getInfo = ()=> async(dispatch) => {
     try{
-    const response = await axios(`/`)
+    const response = await axios(`/project`)
     const data = response.data;
     return dispatch({
-        type: PRODUCT,
+        type: INFO,
         payload: data
     })
 }catch(error){
@@ -20,11 +22,11 @@ export const getProduct = ()=> async(dispatch) => {
     //alert('data not found')
 }
 }
-export const getProductById = (id)=>async(dispatch)=>{
+export const getProjectById = (id)=>async(dispatch)=>{
     try {
-        const response = await axios(`/${id}`)
+        const response = await axios(`/project/${id}`)
         return dispatch({
-            type: PRODUCT_BY_ID,
+            type: SINGLE_PROJECT,
             payload:response.data
         });
     } catch (error) {
@@ -32,11 +34,11 @@ export const getProductById = (id)=>async(dispatch)=>{
         //alert('data not found')
     }
  }
- export const getItem = (id)=>async(dispatch)=>{
+ export const getById = (id)=>async(dispatch)=>{
     try {
-        const response = await axios(`/item/${id}`)
+        const response = await axios(`/project/item/${id}`)
         return dispatch({
-            type: ITEM,
+            type: DETAIL_INFO,
             payload:response.data
         });
     } catch (error) {
@@ -44,7 +46,30 @@ export const getProductById = (id)=>async(dispatch)=>{
         //alert('data not found')
     }
  }
-
+export const getUsers = ()=>async(dispatch)=>{
+    try {
+        const response = await axios(`/user`, setAuthHeader())
+        return dispatch({
+            type: USERS,
+            payload: response.data
+        })
+    } catch (error) {
+        console.error(error)
+        alert('data not found')
+    }
+}
+export const getUserById = (id)=>async(dispatch)=>{
+    try {
+        const response = await axios(`/user/${id}`, setAuthHeader())
+        return dispatch({
+            type: USER_BY_ID,
+            payload: response.data
+        })
+    } catch (error) {
+        console.error(error)
+        alert('data not found')
+    }
+}
 
 export const cleanDetail = ()=>{
     return {
