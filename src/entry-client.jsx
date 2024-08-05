@@ -41,7 +41,7 @@ ReactDOM.hydrateRoot(
             <App />
           </BrowserRouter>
         </ReduxProvider>
-        <ToastContainer/>
+        <ToastContainer />
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
