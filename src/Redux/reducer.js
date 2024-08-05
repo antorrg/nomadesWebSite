@@ -24,7 +24,7 @@ const initialState = {
 
 };
 
-const rootReducer = (state= initialState, {type, payload})=>{
+const reducer = (state= initialState, {type, payload})=>{
     switch(type){
         case INFO:
             return{
@@ -74,4 +74,4 @@ const rootReducer = (state= initialState, {type, payload})=>{
     }
 }
 
-export default rootReducer;
+export default reducer;

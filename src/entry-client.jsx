@@ -11,7 +11,7 @@ import { ToastContainer } from "react-toastify";
 //import store from './redux/store'
 import { createStore, applyMiddleware, compose } from "redux";
 import { thunk } from "redux-thunk";
-import rootReducer from "./redux/reducer.js";
+import reducer from "./redux/reducer.js";
 import { AuthProvider } from "../src/Auth/AuthContext/AuthContext";
 import axios from "axios";
 
@@ -26,7 +26,7 @@ delete window.__PRELOADED_STATE__;
 // Crear el store con el estado prehidratado
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  rootReducer,
+  reducer,
   preloadedState,
   composeEnhancers(applyMiddleware(thunk))
 );
@@ -41,7 +41,7 @@ ReactDOM.hydrateRoot(
             <App />
           </BrowserRouter>
         </ReduxProvider>
-        <ToastContainer />
+        <ToastContainer/>
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
