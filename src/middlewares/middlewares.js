@@ -1,114 +1,86 @@
-import pkg from 'jsonwebtoken'
 import env from '../envConfig.js'
+import eh from '../utils/errorHandlers.js'
 import { validate as uuidValidate, version as uuidVersion } from 'uuid';
 import { body, query,validationResult } from 'express-validator';
 
 export default {
- verifyToken : (req, res, next)=>{
- let token = req.headers['x-access-token'] || req.headers.authorization;
+    loginUser : eh.catchAsync(async (req, res, next)=>{
+        const{email, password}= req.body;
+        // Validar si existe el email y su formato usando una expresión regular
+        if(!email){eh.throwError('Falta el email', 400)};
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {eh.throwError('Formato de email invalido', 400)}
+        if(!password){eh.throwError('Falta la contraseña!', 400)};
+        const passwordRegex = /^(?=.*[A-Z]).{8,}$/; // Al menos 8 caracteres y una letra mayúscula
+        if (!passwordRegex.test(password)) {eh.throwError('Contraseña invalida. Esta debe tener al menos 8 caracteres y una mayuscula',400)}
+        next()
+    }),
 
-    if(!token){ return res.status(401).json({error: 'Acceso no autorizado. Token no proporcionado'})}
-    if (token.startsWith('Bearer ')) {
-        // Eliminar el prefijo 'Bearer ' del token
-        token = token.slice(7, token.length);
-    }
-
-    pkg.verify(token, env.SecretKey, (err, decoded)=>{
-        if(err){
-            if(err.name === 'TokenExpiredError'){return res.status(401).json({error: 'Token expirado'})
-            }return res.status(401).json({error: 'Token invalido'})
-        }
-        req.user = decoded;
-        const userId = decoded._id;
-        const userRole= decoded.role;
-        req.userInfo = {userId, userRole}
-        //console.log('userInfo: ', req.user.userId, )
-        //console.log('soy role : ', req.user.role)
-        next();
-    })
-
-},
-
-generateToken : (user)=>{
-    
-    const token = pkg.sign({userId: user._id, email:user.email, role:user.role}, env.SecretKey, {expiresIn: '5h'});
-    return token;
-
-},
-
-createHolderMidd : async (req, res, next)=>{
-    const{email, password}= req.body;
-    // Validar si existe el email y su formato usando una expresión regular
-    if(!email){return res.status(400).json({error: "missing email"})};
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {return res.status(400).json({ error: "invalid email format" });}
-    if(!password){return res.status(400).json({error: "missing password"})};
-    const passwordRegex = /^(?=.*[A-Z]).{8,}$/; // Al menos 8 caracteres y una letra mayúscula
-    if (!passwordRegex.test(password)) {
-        return res.status(400).json({ error: "invalid password format. Pass musk contain at least 8 char and 1 cap.letter"});}
-    next()},
-
-updHolderMidd : (req, res, next) => {
+updUserMidd : eh.catchAsync((req, res, next) => {
     try {
     const { id } = req.params; const newData = req.body;
     // Validar que el ID esté presente
-    if (!id) { return res.status(400).json({ error: 'Missing id' })}
+    if (!id) {eh.throwError('Falta el id', 400)}
     // Validar que el ID sea un UUID v4 válido
-    if (!uuidValidate(id) || uuidVersion(id) !== 4) {return res.status(400).json({ error: 'Invalid id' })}
+    if (!uuidValidate(id) || uuidVersion(id) !== 4) {eh.throwError('Id invalido!', 400)}
     // Validar que el cuerpo de la solicitud esté presente y no vacío
-    if (!newData || Object.keys(newData).length === 0) {return res.status(400).json({ error: 'Missing body' })}
+    if (!newData || Object.keys(newData).length === 0) {eh.throwError('Faltan elementos!!', 400)}
 
     // Puedes agregar validaciones adicionales para los campos esperados en newData
     const requiredFields = ['email', 'given_name', 'picture', 'country', 'role', 'enable'];
     const missingFields = requiredFields.filter(field => !(field in newData));
-    if (missingFields.length > 0) {return res.status(400).json({ error: `Missing fields: ${missingFields.join(', ')}` })}
+    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
     next();
-    } catch (error) {return res.status(500).json({ error: 'Internal server error' })}
-},
-createItem : (req, res, next) => {
-    const {img, text, id } = req.body;
-    if(!img){return res.status(400).json({error: 'missing parameter'})}
-    if(!text){return res.status(400).json({error: 'missing parameter'})}
-    if(!id){return res.status(400).json({error: 'missing parameter'})}
-    next()},
+    } catch (error) {eh.throwError('Error interno del servidor', 500)}
+}),
+createItem : eh.catchAsync((req, res, next) => {
+    const newData = req.body;
+    if (!newData || Object.keys(newData).length === 0) {eh.throwError('Faltan elementos!!', 400)}
 
-createMidd : (req, res, next) => {
-    const {title, landing,logo, info_header, info_body, url, items } = req.body;
-    if(!title){return res.status(400).json({error: 'missing parameter'})}
-    if(!landing){return res.status(400).json({error: 'missing parameter'})}
-    if(!logo){return res.status(400).json({error: 'missing parameter'})}
-    if(!info_header){return res.status(400).json({error: 'missing parameter'})}
-    if(!info_body){return res.status(400).json({error: 'missing parameter'})}
-    if(!url){return res.status(400).json({error: 'missing parameter'})}
-    if(!items){return res.status(400).json({error: 'missing parameter'})}
-    if(items.length ===0){return res.status(400).json({error: 'missing parameter'})}
+    const requiredFields = ['img', 'text', 'id'];
+    const missingFields = requiredFields.filter(field => !(field in newData));
+    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
     next();
-},
-protectParam : (req, res, next) => {
+    }),
+
+createProduct : eh.catchAsync((req, res, next) => {
+    const newData = req.body;
+
+    const requiredFields = ['title', 'landing', 'logo', 'info_header', 'info_body', 'url',];
+    const missingFields = requiredFields.filter(field => !(field in newData));
+    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
+
+    let items = newData.items
+    if(!items || items.length ===0){eh.throwError('Faltan items!!', 400)}
+    const itemFields = ['img', 'text', 'id',];
+    const missingItemFields = itemFields.filter(field => !(field in newData));
+    if (missingItemFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingItemFields.join(', ')} `, 400)}
+    next();
+}),
+protectParam : eh.catchAsync((req, res, next) => {
     const {id} = req.params;
     const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id));
     if (id && !idIsNumber) {
     return res.status(400).render('error', { message: 'Parámetros no permitidos', status: 400 })}
-    next()},
+    next()}),
 
-protectRoute : (req, res, next) => {
+protectRoute : eh.catchAsync((req, res, next) => {
     const unexpectedParams = Object.keys(req.body).length > 0;
     // Verifica que 'id' en la query sea un número si está presente
     const id = req.query.id;
     const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id))
     if (unexpectedParams || (id && !idIsNumber)) {
     return res.status(400).render('error', { message: 'Parámetros no permitidos', status: 400 })}
-    next()},
-updHome: (req, res, next)=>{
-    const {title, landing, logo, info_header, info_body, url } = req.body;
+    next()
+}),
 
-    if(!title){return res.status(400).json({error: 'missing parameter'})}
-    if(!landing){return res.status(400).json({error: 'missing parameter'})}
-    if(!logo){return res.status(400).json({error: 'missing parameter'})}
-    if(!info_header){return res.status(400).json({error: 'missing parameter'})}
-    if(!info_body){return res.status(400).json({error: 'missing parameter'})}
-    if(!url){return res.status(400).json({error: 'missing parameter'})}
-    
+updProduct: eh.catchAsync((req, res, next)=>{
+    const newData = req.body;
+
+    const requiredFields = ['title', 'landing', 'logo', 'info_header', 'info_body', 'url',];
+    const missingFields = requiredFields.filter(field => !(field in newData));
+    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
+
     next();
-},    
+}),    
 }

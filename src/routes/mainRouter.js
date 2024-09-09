@@ -5,8 +5,7 @@ import productRouter from './productRouterRest.js'
 import userRouter from './userRouterRest.js'
 import file from '../controllers/rest/fileUpload.js'
 import {uploadMiddleware} from '../utils/multer.js'
-import ctr from "../controllers/projectControllers.js";
-import mid from "../middlewares/middlewares.js";
+//import mid from "../middlewares/middlewares.js";
 
 const mainRouter = express.Router()
 //mainRouter.use(mid.sanitizeBody);
@@ -16,13 +15,13 @@ mainRouter.use(pageRouter)
 
 mainRouter.use(adminRouter)
 
-mainRouter.use('/api/v1/imgupload', uploadMiddleware,file.uploadImg)
+//mainRouter.post('/api/v1/imgupload', uploadMiddleware,file.uploadImg)
 
 mainRouter.use('/api/v1', productRouter)
 
 mainRouter.use('/api/v1', userRouter)
 
-mainRouter.use(mid.lostRoute)
+//mainRouter.use(mid.lostRoute)
 
 
 export default mainRouter;
