@@ -1,16 +1,13 @@
 import session from 'supertest'
-import app from '../src/server.js'
-const agent = session(app);
+import server from '../src/app.js'
+const agent = session(server);
 import * as help from './helperTest/IntegrationTest(06).js'
 import * as page from './helperTest/helpPages(03).js'
 import * as store from './helperTest/testStore.js';
 
 
 describe('Test de rutas Usuario, Project.', () => {
-    // afterAll(()=>{
-    //     console.log('Finalizando todas las pruebas...')
-
-    // })
+    
     describe('Test de rutas de usuario: "/api/user": ', () => {
         describe('Ruta "user/create": Ruta de creacion de usuario', () => {
             it('Deberia responder con status 201 y retornar el usuario', async () => {

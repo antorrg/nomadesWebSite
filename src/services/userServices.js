@@ -3,6 +3,9 @@ import eh from '../utils/errorHandlers.js'
 import bcrypt from "bcrypt";
 import env from "../envConfig.js";
 import help from "./helpers.js";
+import NodeCache from "node-cache";
+
+const cache = new NodeCache({ stdTTL: 3600 }); // TTL (Time To Live) de una hora
 
 export default {
   userCreate: async (email1, password1) => {
@@ -54,10 +57,17 @@ export default {
   },
 
   getUsersById: async (id) => {
+     // Intento obtener los datos del caché
+     let cachedUser = cache.get(`userById_${id}`);
+     if (cachedUser) {
+       return cachedUser;
+     }
     try {
       const userFound = await User.findByPk(id);
       if (!userFound) {eh.throwError('Usuario no hallado', 404)}
-      return help.userParser(userFound, true, true);
+      const userDetail =  help.userParser(userFound, true, true);
+      cache.set(`userById_${id}`, userDetail);
+      return userDetail;
     } catch (error) { throw error;}
   },
 
@@ -77,6 +87,9 @@ export default {
         enable: Boolean(newData.enable),
       };
       const userUpdated = await user.update(updInfo);
+      if (userUpdated) {
+        cache.del(`userById_${id}`);
+      }
       return help.userParser(userUpdated, true, true);
     } catch (error) { throw error; }
   },
@@ -97,7 +110,8 @@ export default {
       if (!user) { eh.throwError('Usuario no hallado', 404)}
       const hashedPassword = await bcrypt.hash(password, 12);
       const newData = { password: hashedPassword };
-      await user.update(newData);
+      const newUser = await user.update(newData);
+      if (newUser) {cache.del(`userById_${id}`)}
       return "Contraseña actualizada exitosamente";
     } catch (error) { throw error; }
   },
@@ -107,6 +121,7 @@ export default {
       const user = await User.findByPk(id);
       if (!user) { eh.throwError('Usuario no hallado', 404)}
       await user.destroy(id);
+      cache.del(`userById_${id}`)
       return { message: "Usuario borrado exitosamente" };
     } catch (error) { throw error;}
   },

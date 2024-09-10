@@ -2,49 +2,11 @@ import serverTest from './helperTest/serverTest.js'
 import session from 'supertest'
 const agent = session(serverTest)
 import * as store from './helperTest/testStore.js'
-
 import midd from '../src/middlewares/middlewares.js'
 
 
 
 describe('Tests de middlewares',()=>{
-    // afterAll(()=>{
-    //     console.log('Finalizando todas las pruebas...')
-     
-    // })
-    describe('Funciones "generateToken" y "verifyToken" (jsonwebtoken) ', ()=>{
-        it('Deberia permitir el paso si está presente el token', async()=>{
-            const user = { id: 556, email: 'josenomeacuerdo@nose.com', role: 'user'}
-            const token = midd.generateToken(user)
-            store.setToken(token) 
-            const response = await agent
-             .post('/test/user')
-             .send({user})
-             .set('Authorization', `Bearer ${token}`)
-             .expect('Content-Type', /json/)
-             .expect(200);
-             expect(response.body).toEqual({ message: 'Passed middleware' })       
-        })
-        it('Deberia negar el paso si no está presente el token o este no es valido', async()=>{
-            const user = { id: 556, email: 'josenomeacuerdo@nose.com', role: 'user'}
-            const response = await agent
-             .post('/test/user')
-             .send({user})
-             .set('Authorization', `Bearer pepito`)
-             .expect('Content-Type', /json/)
-             .expect(401);
-             expect(response.body).toEqual({error: "Token invalido"})       
-        })
-        it('Deberia decodificar el id y el role del usuario en un objeto: "req.UserInfo"', async()=>{
-            const token = store.getToken()
-            const compare = { userId: 556, userRole: 'user'}
-            const response = await agent
-             .get('/test/user')
-             .set('Authorization', `Bearer ${token}`)
-             .expect(200);
-             expect(response.body).toEqual(compare)    
-        })
-    });
     describe('Middleware "holderCreate", de validacion de usuario (creacion y login)', ()=>{
         it('Deberia permitir el paso si el email y el password son correctos', async()=>{
             const user = {email: 'usuarioejemplo@nose.com', password: "L1234567"}

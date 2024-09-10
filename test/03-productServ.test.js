@@ -6,7 +6,7 @@ en las que se presenta el producto*/
 
 describe('Funciones de Service/ product. CRUD basico completo de ambas tablas.', ()=>{
      afterAll(()=>{
-        console.log('Finalizando todas las pruebas...')
+        //console.log('Finalizando todas las pruebas...')
     })
     describe('Funciones "createProduct" y "addNewItem" de creacion de producto e items', ()=>{
         it('Deberia crear un producto con items,', async()=>{
@@ -88,7 +88,6 @@ describe('Funciones de Service/ product. CRUD basico completo de ambas tablas.',
         it('Deberia borrar un item especifico (borrado fisico)', async()=>{
             const id = 1
             const response = await prd.delItem(id)
-            console.log(response)
             expect(response).toEqual({ message: 'Item borrado exitosamente' })
         })
     })
@@ -96,7 +95,6 @@ describe('Funciones de Service/ product. CRUD basico completo de ambas tablas.',
         it('Deberia borrar a product y todos sus items asociados (borrado fisico)', async()=>{
             const id = 1
             const response = await prd.delProduct(id)
-            console.log(response)
             expect(response).toEqual({ message: 'Producto y sus items asociados borrados exitosamente' })
         })
     })

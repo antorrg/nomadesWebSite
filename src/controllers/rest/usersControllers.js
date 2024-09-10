@@ -41,4 +41,8 @@ export default {
       res.status(200).json("Sesion cerrada");
     });
   }),
+  getUserController : eh.catchAsync(async(req, res)=>{
+    const response = await sv.getAllUsers()
+    res.status(200).json(response)
+  })
 };

@@ -4,6 +4,7 @@ import connectSessionSequelize from 'connect-session-sequelize';
 import crypto from 'crypto'
 import pkg from 'jsonwebtoken'
 import env from '../../envConfig.js';
+import eh from '../../utils/errorHandlers.js'
 
 const SequelizeStore = connectSessionSequelize(session.Store);
 
@@ -76,26 +77,23 @@ const recoveryRole = (str, position)=>{
 export const generateToken = (user, session)=>{
         const intData = disguiseRole(user.role, 5)
         const expiresIn = Math.ceil(session.cookie.maxAge / 1000); // Obtener el tiempo de expiración en segundos
-        console.log('estoy en el token: ', expiresIn)
+        //console.log('estoy en el token: ', expiresIn)
         const token = pkg.sign({userId: user.id, email:user.email, internalData:intData}, env.SecretKey, {expiresIn});
         return token;
-    
     };
 export const verifyToken = (req, res, next)=>{
      let token = req.headers['x-access-token'] || req.headers.authorization;
-    
-        if(!token){ return res.status(401).json({error: 'Acceso no autorizado. Token no proporcionado'})}
-        if (token.startsWith('Bearer')) {
+            try{
+            if(!token){eh.throwError('Acceso no autorizado. Token no proporcionado', 401)}
+            if (token.startsWith('Bearer')) {
             // Eliminar el prefijo 'Bearer ' del token
             token = token.slice(7, token.length);
-        }
-        if (!req.session.user || req.session.user.token !== token) {
-            return res.status(401).json({ message: 'Token o sesión invalidos!' });
-        }
-        pkg.verify(token, env.SecretKey, (err, decoded)=>{
+              }
+            if (!req.session.user || req.session.user.token !== token) {eh.throwError('Token o sesión invalidos!', 401)}
+            pkg.verify(token, env.SecretKey, (err, decoded)=>{
             if(err){
-                if(err.name === 'TokenExpiredError'){return res.status(401).json({error: 'Token expirado'})
-                }return res.status(401).json({error: 'Token invalido'})
+                if(err.name === 'TokenExpiredError'){eh.throwError('Token expirado', 401)
+                }eh.throwError('Token invalido', 401)
             }
             req.user = decoded;
             const userId = decoded.userId;
@@ -104,10 +102,12 @@ export const verifyToken = (req, res, next)=>{
             //console.log('userInfo: ', req.user.userId, )
             //console.log('soy role : ', req.user.role)
             next();
+
         })
-    
+       
+    }catch(error){throw error}
     };
-export const checkRole = (allowedRoles) => {
+export const checkRole = eh.catchAsync((allowedRoles) => {
         return (req, res, next) => {
           const {userRole}= req.userInfo;
           //const userRole = req.user.role; // asumiendo que el rol está en req.user después de la autenticación
@@ -120,7 +120,7 @@ export const checkRole = (allowedRoles) => {
             res.status(403).json({ error: 'Acceso no autorizado' });
           }
         };
-      };
+      });
 
 //Este es un modelo de como recibe el parámetro checkRole:
   //todo   app.get('/ruta-protegida', checkRole(['admin']), (req, res) => {

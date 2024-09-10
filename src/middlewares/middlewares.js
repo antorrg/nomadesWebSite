@@ -57,23 +57,6 @@ createProduct : eh.catchAsync((req, res, next) => {
     if (missingItemFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingItemFields.join(', ')} `, 400)}
     next();
 }),
-protectParam : eh.catchAsync((req, res, next) => {
-    const {id} = req.params;
-    const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id));
-    if (id && !idIsNumber) {
-    return res.status(400).render('error', { message: 'Parámetros no permitidos', status: 400 })}
-    next()}),
-
-protectRoute : eh.catchAsync((req, res, next) => {
-    const unexpectedParams = Object.keys(req.body).length > 0;
-    // Verifica que 'id' en la query sea un número si está presente
-    const id = req.query.id;
-    const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id))
-    if (unexpectedParams || (id && !idIsNumber)) {
-    return res.status(400).render('error', { message: 'Parámetros no permitidos', status: 400 })}
-    next()
-}),
-
 updProduct: eh.catchAsync((req, res, next)=>{
     const newData = req.body;
 
@@ -82,5 +65,38 @@ updProduct: eh.catchAsync((req, res, next)=>{
     if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
 
     next();
-}),    
+}),
+middUuid: eh.catchAsync((req, res, next) => {
+    const { id } = req.params;
+    if (!id) {eh.throwError('Falta el id',400)}
+    if (!uuidValidate(id)) {eh.throwError('Parametros no permitidos', 400)}
+    next();
+    }),
+
+middIntId : eh.catchAsync((req, res, next) => {
+        const {id} = req.params;
+        const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id));
+        if (!id) {eh.throwError('Falta el id',400)}
+        if (id && !idIsNumber) {eh.throwError('Parametros no permitidos')}
+        next()
+    }),
+   
+protectParam : (req, res, next) => {
+    const {id} = req.params;
+    const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id));
+    if (id && !idIsNumber) {
+    return res.status(400).render('error', { message: 'Parámetros no permitidos', status: 400 })}
+    next()},
+
+protectRoute : (req, res, next) => {
+    const unexpectedParams = Object.keys(req.body).length > 0;
+    // Verifica que 'id' en la query sea un número si está presente
+    const id = req.query.id;
+    const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id))
+    if (unexpectedParams || (id && !idIsNumber)) {
+    return res.status(400).render('error', { message: 'Parámetros no permitidos', status: 400 })}
+    next()
+},
+
+    
 }

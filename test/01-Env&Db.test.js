@@ -5,7 +5,7 @@ import {User, Product, Item} from '../src/db.js'
 
 describe('Iniciando tests, probando variables de entorno del archivo "envConfig.js" y existencia de tablas en DB.',()=>{
     afterAll(()=>{
-        console.log('Finalizando todas las pruebas...')
+       // console.log('Finalizando todas las pruebas...')
     })
     
     it('Deberia retornar el estado y la variable de base de datos correcta', ()=>{
