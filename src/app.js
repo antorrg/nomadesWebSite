@@ -1,5 +1,5 @@
 import express from "express";
-//import { fileURLToPath } from "url";
+import { fileURLToPath } from "url";
 import path from "path";
 import morgan from "morgan";
 import cors from "cors";
@@ -7,12 +7,10 @@ import sm from "./utils/serverMiddlewares.js";
 import {sessionMiddle} from "./middlewares/validation/sessionMiddle.js";
 import mainRouter from './routes/mainRouter.js'
 
-// const fileName = fileURLToPath(import.meta.url);
-// const dirname = path.dirname(fileName);
-// console.log('dirname: ',dirname);
-const pepito = path.resolve()
-const dirname = path.join(pepito, 'src')
-console.log('soy resolve: ',dirname)
+const fileName = fileURLToPath(import.meta.url);
+const dirname = path.dirname(fileName);
+console.log('dirname: ',dirname);
+
 
 const server = express();
 server.use(morgan("dev"));
