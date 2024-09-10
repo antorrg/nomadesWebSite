@@ -17,7 +17,7 @@ export default {
     }),
 
 updUserMidd : eh.catchAsync((req, res, next) => {
-    try {
+    
     const { id } = req.params; const newData = req.body;
     // Validar que el ID esté presente
     if (!id) {eh.throwError('Falta el id', 400)}
@@ -29,9 +29,8 @@ updUserMidd : eh.catchAsync((req, res, next) => {
     // Puedes agregar validaciones adicionales para los campos esperados en newData
     const requiredFields = ['email', 'given_name', 'picture', 'country', 'role', 'enable'];
     const missingFields = requiredFields.filter(field => !(field in newData));
-    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
+    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')}`, 400)}
     next();
-    } catch (error) {eh.throwError('Error interno del servidor', 500)}
 }),
 createItem : eh.catchAsync((req, res, next) => {
     const newData = req.body;
@@ -39,30 +38,46 @@ createItem : eh.catchAsync((req, res, next) => {
 
     const requiredFields = ['img', 'text', 'id'];
     const missingFields = requiredFields.filter(field => !(field in newData));
-    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
+    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')}`, 400)}
     next();
     }),
 
-createProduct : eh.catchAsync((req, res, next) => {
-    const newData = req.body;
-
-    const requiredFields = ['title', 'landing', 'logo', 'info_header', 'info_body', 'url',];
-    const missingFields = requiredFields.filter(field => !(field in newData));
-    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
-
-    let items = newData.items
-    if(!items || items.length ===0){eh.throwError('Faltan items!!', 400)}
-    const itemFields = ['img', 'text', 'id',];
-    const missingItemFields = itemFields.filter(field => !(field in newData));
-    if (missingItemFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingItemFields.join(', ')} `, 400)}
-    next();
-}),
+    createProduct: eh.catchAsync((req, res, next) => {
+        const newData = req.body;
+        
+        // Validar los campos requeridos en newData
+        const requiredFields = ['title', 'landing', 'logo', 'info_header', 'info_body', 'url'];
+        const missingFields = requiredFields.filter(field => !(field in newData));
+        if (missingFields.length > 0) {
+             eh.throwError(`Parametros faltantes: ${missingFields.join(', ')}`, 400);
+        }
+    
+        // Validar los items
+        let items = newData.items;
+        if (!items || items.length === 0) {
+          eh.throwError('Faltan items!!', 400);
+        }
+    
+        const itemFields = ['img', 'text'];
+    
+        // Iterar los items y lanzar el error en cuanto se detecta un campo faltante
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            const missingItemFields = itemFields.filter(field => !(field in item));
+    
+            if (missingItemFields.length > 0) { eh.throwError(`Parametros faltantes en item ${i + 1}: ${missingItemFields.join(', ')}`, 400);
+            }
+        }
+    
+        next();
+    }),
+    
 updProduct: eh.catchAsync((req, res, next)=>{
     const newData = req.body;
 
     const requiredFields = ['title', 'landing', 'logo', 'info_header', 'info_body', 'url',];
     const missingFields = requiredFields.filter(field => !(field in newData));
-    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')} `, 400)}
+    if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')}`, 400)}
 
     next();
 }),
@@ -77,7 +92,7 @@ middIntId : eh.catchAsync((req, res, next) => {
         const {id} = req.params;
         const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id));
         if (!id) {eh.throwError('Falta el id',400)}
-        if (id && !idIsNumber) {eh.throwError('Parametros no permitidos')}
+        if (id && !idIsNumber) {eh.throwError('Parametros no permitidos', 400)}
         next()
     }),
    

@@ -7,7 +7,7 @@ import midd from '../src/middlewares/middlewares.js'
 
 
 describe('Tests de middlewares',()=>{
-    describe('Middleware "holderCreate", de validacion de usuario (creacion y login)', ()=>{
+    describe('Middleware "loginUser", de validacion de usuario (creacion y login)', ()=>{
         it('Deberia permitir el paso si el email y el password son correctos', async()=>{
             const user = {email: 'usuarioejemplo@nose.com', password: "L1234567"}
             const response = await agent
@@ -24,7 +24,7 @@ describe('Tests de middlewares',()=>{
              .send(user)
              .expect('Content-Type', /json/)
              .expect(400)
-             expect(response.body).toEqual({ error: "missing email" })
+             expect(response.body).toEqual('Falta el email')
         })
         it('Deberia arrojar un error si el formato del email no es correcto', async()=>{
             const user = {email: 'usuarioejemplo@nosecom', password: "L1234567"}
@@ -33,7 +33,7 @@ describe('Tests de middlewares',()=>{
              .send(user)
              .expect('Content-Type', /json/)
              .expect(400)
-             expect(response.body).toEqual({ error: "invalid email format" })
+             expect(response.body).toEqual('Formato de email invalido')
         })
         it('Deberia arrojar un error si faltara el password', async()=>{
             const user = { email: 'usuarioejemplo@nose.com',}
@@ -42,7 +42,7 @@ describe('Tests de middlewares',()=>{
              .send(user)
              .expect('Content-Type', /json/)
              .expect(400)
-             expect(response.body).toEqual({error: "missing password"})
+             expect(response.body).toEqual('Falta la contraseña!')
         })
         it('Deberia arrojar un error si el formato del password no es correcto', async()=>{
             const user = {email: 'usuarioejemplo@nose.com', password: "l1234567"}
@@ -51,7 +51,7 @@ describe('Tests de middlewares',()=>{
              .send(user)
              .expect('Content-Type', /json/)
              .expect(400)
-             expect(response.body).toEqual({ error: "invalid password format. Pass musk contain at least 8 char and 1 cap.letter"})
+             expect(response.body).toEqual('Contraseña invalida. Esta debe tener al menos 8 caracteres y una mayuscula')
         })
     })
     describe('Middleware "middUuid" validacion de uuid del usuario', ()=>{
@@ -67,10 +67,10 @@ describe('Tests de middlewares',()=>{
             const response = await agent
              .get(`/test/users/${id}`)
              .expect(400);
-             expect(response.body).toEqual({ error: 'Invalid uuid' })    
+             expect(response.body).toEqual('Parametros no permitidos')    
         })
     })
-    describe('Middleware "updHolderMidd" de edicion de usuario', ()=>{
+    describe('Middleware "updUserMidd" de edicion de usuario', ()=>{
         it('Deberia pasar si los elementos del body estan y son correctos', async()=>{
             const newData = {email: 'll', given_name: 'll', picture: 'll', country: 'll', role: 1, enable: true}
             const id = "c1d970cf-9bb6-4848-aa76-191f905a2edd"
@@ -89,7 +89,7 @@ describe('Tests de middlewares',()=>{
             .send(newData)
             .expect('Content-Type', /json/)
             .expect(400)
-            expect(response.body).toEqual({ error: `Missing fields: given_name` })
+            expect(response.body).toEqual("Parametros faltantes: given_name" )
         })
         it('Deberia arrojar un error si el body no estuviera', async()=>{
             const newData = {}
@@ -99,12 +99,12 @@ describe('Tests de middlewares',()=>{
             .send(newData)
             .expect('Content-Type', /json/)
             .expect(400)
-            expect(response.body).toEqual({ error: 'Missing body' })
+            expect(response.body).toEqual('Faltan elementos!!')
         })
     })
-    describe('Middleware "createMidd" de creacion de page & item (creacion inicial)', ()=>{
+    describe('Middleware "createProduct" de creacion de page & item (creacion inicial)', ()=>{
         it('Deberia pasar si el body contiene todos los elementos.', async()=>{
-            const body = {title: 'r', landing: 'r', logo: 'r', info_header:'r', info_body: 'r', url: 'r', items: [{url:'r', text: 'r'}]}
+            const body = {title: 'r', landing: 'r', logo: 'r', info_header:'r', info_body: 'r', url: 'r', items: [{img:'r', text: 'r'}, {img:'s', text: 's'}, {img:'t', text: 't'}]}
             const response = await agent
              .post('/test/page')
              .send(body)
@@ -119,9 +119,18 @@ describe('Tests de middlewares',()=>{
              .send(body)
              .expect('Content-Type', /json/)
              .expect(400)
-             expect(response.body).toEqual({error: 'missing parameter'})
+             expect(response.body).toEqual('Parametros faltantes: landing')
         })
-    })
+        it('Deberia arrojar un error si falta alguna propiedad (en items).', async()=>{
+            const body = {title: 'r', landing: 'r', logo: 'r', info_header:'r', info_body: 'r', url: 'r', items: [{ text: 'r'}, {img:'s', }]}
+            const response = await agent
+             .post('/test/page')
+             .send(body)
+             .expect('Content-Type', /json/)
+             .expect(400)
+             expect(response.body).toEqual('Parametros faltantes en item 1: img')
+        })
+    }) //'Parametros faltantes: item 1: img, item 2: text'
     describe('Middleware "createItem" creacion individual de Items.', ()=>{
         it('Deberia pasar si el body contiene todos las propiedades.', async()=>{
             const body = {img:'r', text: 'r', id: 1}
@@ -139,10 +148,10 @@ describe('Tests de middlewares',()=>{
              .send(body)
              .expect('Content-Type', /json/)
              .expect(400)
-             expect(response.body).toEqual({ error: `Missing fields: text` })
+             expect(response.body).toEqual('Parametros faltantes: text')
         })
     })
-    describe('Middleware "protectParam", proteccion de rutas con id numericos (integer).', ()=>{
+    describe('Middleware "middIntId", proteccion de rutas con id numericos (integer).', ()=>{
         it('Deberia permitir el acceso si hay un id valido (integer).', async()=>{
             const id = 88;
             const response = await agent
@@ -155,10 +164,10 @@ describe('Tests de middlewares',()=>{
             const response = await agent
              .get(`/test/${id}`)
              .expect(400);
-             expect(response.body).toEqual({ error: 'Parámetros no permitidos'})    
+             expect(response.body).toEqual('Parametros no permitidos')    
         })
     })
-    describe('Middleware "UpdHome" de actualizacion de page', ()=>{
+    describe('Middleware "UpdProduct" de actualizacion de page', ()=>{
         it('Deberia pasar si el body contiene todos los elementos.', async()=>{
             const id = 1;
             const body = {title: 'r', landing: 'r', logo: 'r', info_header:'r', info_body: 'r', url: 'r'}
@@ -177,7 +186,7 @@ describe('Tests de middlewares',()=>{
              .send(body)
              .expect('Content-Type', /json/)
              .expect(400)
-             expect(response.body).toEqual({error: 'missing parameter'})
+             expect(response.body).toEqual('Parametros faltantes: landing')
         })
     })
 })

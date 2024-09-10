@@ -6,30 +6,31 @@ import * as store from './testStore.js'
 const serverTest = express()
 serverTest.use(express.json())
 
-serverTest.post('/test/user/create', mid.createHolderMidd, (req, res) => {
+serverTest.post('/test/user/create', mid.loginUser, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
 serverTest.get('/test/users/:id', mid.middUuid, (req, res) => {
         res.status(200).json({ message: 'Passed middleware' })})
 
-serverTest.put('/test/user/:id', mid.updHolderMidd, (req, res) => {
+serverTest.put('/test/user/:id', mid.updUserMidd, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
-serverTest.post('/test/page', mid.createMidd, (req, res) => {
+serverTest.post('/test/page', mid.createProduct, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
 serverTest.post('/test/item', mid.createItem, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
-serverTest.get('/test/:id', mid.protectParam, (req, res) => {
+serverTest.get('/test/:id', mid.middIntId, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
-serverTest.put('/test/page/:id', mid.updHome, (req, res) => {
+serverTest.put('/test/page/:id', mid.updProduct, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
 
-serverTest.put('/test/:id', (req, res) => {
-    res.status(200).json({ message: 'Passed middleware' })})
+// serverTest.put('/test/:id', (req, res) => {
+//     res.status(200).json({ message: 'Passed middleware' })})
+
 serverTest.use((err, req, res, next)=>{
     const status = err.status ||500
     const message = err.message || err.stack
