@@ -4,7 +4,7 @@ import { validate as uuidValidate, version as uuidVersion } from 'uuid';
 import { body, query,validationResult } from 'express-validator';
 
 export default {
-    loginUser : eh.catchAsync(async (req, res, next)=>{
+loginUser : eh.catchAsync(async (req, res, next)=>{
         const{email, password}= req.body;
         // Validar si existe el email y su formato usando una expresión regular
         if(!email){eh.throwError('Falta el email', 400)};
@@ -14,7 +14,7 @@ export default {
         const passwordRegex = /^(?=.*[A-Z]).{8,}$/; // Al menos 8 caracteres y una letra mayúscula
         if (!passwordRegex.test(password)) {eh.throwError('Contraseña invalida. Esta debe tener al menos 8 caracteres y una mayuscula',400)}
         next()
-    }),
+}),
 
 updUserMidd : eh.catchAsync((req, res, next) => {
     
@@ -42,7 +42,7 @@ createItem : eh.catchAsync((req, res, next) => {
     next();
     }),
 
-    createProduct: eh.catchAsync((req, res, next) => {
+createProduct: eh.catchAsync((req, res, next) => {
         const newData = req.body;
         
         // Validar los campos requeridos en newData
@@ -95,7 +95,6 @@ middIntId : eh.catchAsync((req, res, next) => {
         if (id && !idIsNumber) {eh.throwError('Parametros no permitidos', 400)}
         next()
     }),
-   
 protectParam : (req, res, next) => {
     const {id} = req.params;
     const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id));
@@ -112,6 +111,4 @@ protectRoute : (req, res, next) => {
     return res.status(400).render('error', { message: 'Parámetros no permitidos', status: 400 })}
     next()
 },
-
-    
 }

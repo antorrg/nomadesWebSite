@@ -85,7 +85,7 @@ const revertScope = (role)=>{
       case "Moderador": 
       return 2;
       case "Super Admin":
-      return 9
+      return 1
       case "Usuario":
       default :
       return 1
@@ -103,7 +103,9 @@ const emptyUser = ()=>{
         enable: 'No hay datos aun',
     }]
 }
-
+const protectProtocol = (data)=>{
+    return data.role === 9? true: false;
+   }
 export default {
 productCleaner,
 aux,
@@ -112,7 +114,8 @@ dataEmptyPage,
 userParser,
 scope,
 revertScope,
-emptyUser
+emptyUser,
+protectProtocol 
 
 };
  

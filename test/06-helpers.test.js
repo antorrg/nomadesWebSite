@@ -9,29 +9,29 @@ page, pero del campo items la imagen con los textos truncados
 -En el tercero estamos en el detalle de cada item adonde necesitamos la info de item pero 
 con el texto completo.*/
 
-describe('Funcion "homeCleaner" prueba de todas las instancias', ()=>{
+describe('Funcion "productCleaner" prueba de todas las instancias', ()=>{
     it('Deberia retornar un array con 3 objetos con contenido parseado.', ()=>{
-        const info = help.homeCleaner(mock.pages, false)
+        const info = help.productCleaner(mock.pages, false)
         expect(info).toEqual(mock.parsedInfo)
     });
     it('Deberia retornar un objeto parseado del mismo modo, ademas de los items con el texto cortado (10 palabras).', ()=>{
-        const info = help.homeCleaner(mock.page, true)
+        const info = help.productCleaner(mock.page, true)
         expect(info).toEqual(mock.parsedDetail)
     })
 });
-describe('Prueba de funcion "aux" (ya probada en homeCleaner filtrando los Items)', ()=>{
+describe('Prueba de funcion "aux" (ya probada en productCleaner filtrando los Items)', ()=>{
     it('Prueba restante de aux entregando texto completo para Item', ()=>{
         const info = help.aux(mock.item, true)
         expect(info).toEqual(mock.parsedItem)
     })
 })
-describe('Funcion HolderParser (propietario o usuario parseado, funcion adaptada)', ()=>{
-    it('Deberia retornar un arreglo de usuarios sin password visible', ()=>{
-        const info = help.holderParser(mock.users, false)
+describe('Funcion userParser (usuario parseado, funcion adaptada)', ()=>{
+    it('Deberia retornar un arreglo de usuarios sin password visible y el role en un string', ()=>{
+        const info = help.userParser(mock.users, false)
         expect(info).toEqual(mock.parsedUsers)
     })
-    it('Deberia retornar el usuario sin password visible', ()=>{
-        const info = help.holderParser(mock.user, true)
+    it('Deberia retornar el usuario sin password visible y el role en un string', ()=>{
+        const info = help.userParser(mock.user, true)
         expect(info).toEqual(mock.parsedUser)
     })
 })

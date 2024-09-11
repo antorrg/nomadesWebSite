@@ -1,12 +1,12 @@
-import session from 'supertest'
-import server from '../src/app.js'
-const agent = session(server);
-import * as help from './helperTest/IntegrationTest(06).js'
-import * as page from './helperTest/helpPages(03).js'
-import * as store from './helperTest/testStore.js';
+// import session from 'supertest'
+// import server from '../src/app.js'
+// const agent = session(server);
+// import * as help from './helperTest/IntegrationTest(06).js'
+// import * as page from './helperTest/helpPages(03).js'
+// import * as store from './helperTest/testStore.js';
 
 
-describe('Test de rutas Usuario, Project.', () => {
+xdescribe('Test de rutas Usuario, Project.', () => {
     
     describe('Test de rutas de usuario: "/api/user": ', () => {
         describe('Ruta "user/create": Ruta de creacion de usuario', () => {

@@ -41,8 +41,35 @@ export default {
       res.status(200).json("Sesion cerrada");
     });
   }),
-  getUserController : eh.catchAsync(async(req, res)=>{
+ 
+  updUserCtr: eh.catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const newData = req.body;
+    const response = await sv.userUpd(id, newData);
+    res.status(200).json(response);
+  }),
+
+  changePassCtr: eh.catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const { password } = req.body;
+    const response = await sv.userChangePass(id, password);
+    res.status(200).json(response);
+  }),
+
+  verifyPassCtr: eh.catchAsync(async (req, res) => {
+    const { id, password } = req.body;
+    const response = await sv.verifyPass(id, password);
+    res.status(200).json(response);
+  }),
+  
+  delUserCtr: eh.catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const response = await sv.userDel(id);
+    res.status(200).json(response);
+  }),
+  getUserController : eh.catchAsync(async(req, res)=>{//provisiorio
     const response = await sv.getAllUsers()
     res.status(200).json(response)
-  })
+  }),
+  
 };

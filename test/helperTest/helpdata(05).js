@@ -18,37 +18,37 @@ const pages =
           "id": 1,
           "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca2.webp?alt=media&token=bc815cc3-1cee-4c13-83b8-35cfc18c943a",
           "text": "Las diversas partes de la landing page informan al visitante acerca de la historia de los dueños del taller, su visión.",
-          "PageId": 1
+          "ProductId": 1
         },
         {
           "id": 2,
           "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca3.webp?alt=media&token=9ff22b9f-5329-4e7a-9d18-482704758972",
           "text": "Aqui continua la landing, y en esta seccion se ofrecen consejos utiles al usuario, asi como novedades o noticias que los propietarios editan a su gusto.",
-          "PageId": 1
+          "ProductId": 1
         },
         {
           "id": 3,
           "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca4.webp?alt=media&token=e18e1af8-2dfe-4177-9d4f-29f51b0cb234",
           "text": "Este es el formulario de login, adonde el usuario, mecanico o administrador pueden entrar a la pagina. Cabe destacar que la cuenta de usuario asi como los automotores solo pueden ser creados por un mecanico o administrador. (el mecanico puede crear usuarios y sus vehiculos, y solo editar vehiculos, el administrador puede crear usuarios resetear contraseñas, editar y borrar usuarios asi como tambien vehiculos, solo el admin puede editar la landing page).",
-          "PageId": 1
+          "ProductId": 1
         },
         {
           "id": 4,
           "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca5.webp?alt=media&token=c37d8b90-0ea8-4976-b0b1-1c3562e2bb8f",
           "text": "Esta ventana pertenece al usuario, el cual en este caso tiene tres vehiculos, haciendo click en cada icono puede ver los detalles asi como tambien los servicios que se le han prestado.",
-          "PageId": 1
+          "ProductId": 1
         },
         {
           "id": 5,
           "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca8.webp?alt=media&token=50a8eaa7-2092-4bfb-ae1d-0792736ce4be",
           "text": "Esta seria la vista de los servicios. Haciendo click en ella se pueden ver los detalles, esto está disponible tanto para el usuario (sus propios servicios) como para el mecanico (lista de servicios hechos y para hacer)",
-          "PageId": 1
+          "ProductId": 1
         },
         {
           "id": 6,
           "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca11.webp?alt=media&token=8813c4c3-d987-4583-ab7f-fc407311350d",
           "text": "Aqui tenemos el detalle del servicio, este puede ser de tres tipos: service, esto es revisión, cambio de aceite y filtro, correas etc. Reparación: alguna reparacion especial que se programa y se lleva a cabo. Presupuesto: depende de que tipo de reparación se deba hacer se puede trabajar con o sin presupuesto, esto de comun acuerdo con el cliente. En el caso de una revision profunda a fin de estimar un monto por la reparacion, se puede llegar tambien a programar una fecha para el presupuesto",
-          "PageId": 1
+          "ProductId": 1
         }
       ]
     },
@@ -69,37 +69,37 @@ const pages =
             "id": 7,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca2.webp?alt=media&token=bc815cc3-1cee-4c13-83b8-35cfc18c943a",
             "text": "Las diversas partes de la landing page informan al visitante acerca de la historia de los dueños del taller, su visión.",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 8,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca3.webp?alt=media&token=9ff22b9f-5329-4e7a-9d18-482704758972",
             "text": "Aqui continua la landing, y en esta seccion se ofrecen consejos utiles al usuario, asi como novedades o noticias que los propietarios editan a su gusto.",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 9,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca4.webp?alt=media&token=e18e1af8-2dfe-4177-9d4f-29f51b0cb234",
             "text": "Este es el formulario de login, adonde el usuario, mecanico o administrador pueden entrar a la pagina. Cabe destacar que la cuenta de usuario asi como los automotores solo pueden ser creados por un mecanico o administrador. (el mecanico puede crear usuarios y sus vehiculos, y solo editar vehiculos, el administrador puede crear usuarios resetear contraseñas, editar y borrar usuarios asi como tambien vehiculos, solo el admin puede editar la landing page).",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 10,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca5.webp?alt=media&token=c37d8b90-0ea8-4976-b0b1-1c3562e2bb8f",
             "text": "Esta ventana pertenece al usuario, el cual en este caso tiene tres vehiculos, haciendo click en cada icono puede ver los detalles asi como tambien los servicios que se le han prestado.",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 11,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca8.webp?alt=media&token=50a8eaa7-2092-4bfb-ae1d-0792736ce4be",
             "text": "Esta seria la vista de los servicios. Haciendo click en ella se pueden ver los detalles, esto está disponible tanto para el usuario (sus propios servicios) como para el mecanico (lista de servicios hechos y para hacer)",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 12,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca11.webp?alt=media&token=8813c4c3-d987-4583-ab7f-fc407311350d",
             "text": "Aqui tenemos el detalle del servicio, este puede ser de tres tipos: service, esto es revisión, cambio de aceite y filtro, correas etc. Reparación: alguna reparacion especial que se programa y se lleva a cabo. Presupuesto: depende de que tipo de reparación se deba hacer se puede trabajar con o sin presupuesto, esto de comun acuerdo con el cliente. En el caso de una revision profunda a fin de estimar un monto por la reparacion, se puede llegar tambien a programar una fecha para el presupuesto",
-            "PageId": 1
+            "ProductId": 1
           }
         ]
       },
@@ -120,37 +120,37 @@ const pages =
             "id": 13,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca2.webp?alt=media&token=bc815cc3-1cee-4c13-83b8-35cfc18c943a",
             "text": "Las diversas partes de la landing page informan al visitante acerca de la historia de los dueños del taller, su visión.",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 14,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca3.webp?alt=media&token=9ff22b9f-5329-4e7a-9d18-482704758972",
             "text": "Aqui continua la landing, y en esta seccion se ofrecen consejos utiles al usuario, asi como novedades o noticias que los propietarios editan a su gusto.",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 15,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca4.webp?alt=media&token=e18e1af8-2dfe-4177-9d4f-29f51b0cb234",
             "text": "Este es el formulario de login, adonde el usuario, mecanico o administrador pueden entrar a la pagina. Cabe destacar que la cuenta de usuario asi como los automotores solo pueden ser creados por un mecanico o administrador. (el mecanico puede crear usuarios y sus vehiculos, y solo editar vehiculos, el administrador puede crear usuarios resetear contraseñas, editar y borrar usuarios asi como tambien vehiculos, solo el admin puede editar la landing page).",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 16,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca5.webp?alt=media&token=c37d8b90-0ea8-4976-b0b1-1c3562e2bb8f",
             "text": "Esta ventana pertenece al usuario, el cual en este caso tiene tres vehiculos, haciendo click en cada icono puede ver los detalles asi como tambien los servicios que se le han prestado.",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 17,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca8.webp?alt=media&token=50a8eaa7-2092-4bfb-ae1d-0792736ce4be",
             "text": "Esta seria la vista de los servicios. Haciendo click en ella se pueden ver los detalles, esto está disponible tanto para el usuario (sus propios servicios) como para el mecanico (lista de servicios hechos y para hacer)",
-            "PageId": 1
+            "ProductId": 1
           },
           {
             "id": 18,
             "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca11.webp?alt=media&token=8813c4c3-d987-4583-ab7f-fc407311350d",
             "text": "Aqui tenemos el detalle del servicio, este puede ser de tres tipos: service, esto es revisión, cambio de aceite y filtro, correas etc. Reparación: alguna reparacion especial que se programa y se lleva a cabo. Presupuesto: depende de que tipo de reparación se deba hacer se puede trabajar con o sin presupuesto, esto de comun acuerdo con el cliente. En el caso de una revision profunda a fin de estimar un monto por la reparacion, se puede llegar tambien a programar una fecha para el presupuesto",
-            "PageId": 1
+            "ProductId": 1
           }
         ]
       }
@@ -172,19 +172,19 @@ const pages =
      "id": 7,
      "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca2.webp?alt=media&token=bc815cc3-1cee-4c13-83b8-35cfc18c943a",
      "text": "Las diversas partes de la landing page informan al visitante acerca de la historia de los dueños del taller, su visión.",
-     "PageId": 1
+     "ProductId": 1
    },
    {
      "id": 8,
      "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca3.webp?alt=media&token=9ff22b9f-5329-4e7a-9d18-482704758972",
      "text": "Aqui continua la landing, y en esta seccion se ofrecen consejos utiles al usuario, asi como novedades o noticias que los propietarios editan a su gusto.",
-     "PageId": 1
+     "ProductId": 1
    },
    {
      "id": 9,
      "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca4.webp?alt=media&token=e18e1af8-2dfe-4177-9d4f-29f51b0cb234",
      "text": "Este es el formulario de login, adonde el usuario, mecanico o administrador pueden entrar a la pagina. Cabe destacar que la cuenta de usuario asi como los automotores solo pueden ser creados por un mecanico o administrador. (el mecanico puede crear usuarios y sus vehiculos, y solo editar vehiculos, el administrador puede crear usuarios resetear contraseñas, editar y borrar usuarios asi como tambien vehiculos, solo el admin puede editar la landing page).",
-     "PageId": 1
+     "ProductId": 1
    }
 ]
 
@@ -195,7 +195,7 @@ const item =
   "id": 9,
   "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca4.webp?alt=media&token=e18e1af8-2dfe-4177-9d4f-29f51b0cb234",
   "text": "Este es el formulario de login, adonde el usuario, mecanico o administrador pueden entrar a la pagina. Cabe destacar que la cuenta de usuario asi como los automotores solo pueden ser creados por un mecanico o administrador. (el mecanico puede crear usuarios y sus vehiculos, y solo editar vehiculos, el administrador puede crear usuarios resetear contraseñas, editar y borrar usuarios asi como tambien vehiculos, solo el admin puede editar la landing page).",
-  "PageId": 1
+  "ProductId": 1
 };
 
   const users = 
@@ -207,11 +207,10 @@ const item =
       "nickname": "antoniorodrigueztkd",
       "given_name": "",
       "picture": "https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png",
-      "role": 1,
+      "role": "Usuario",
       "country": null,
       "enable": true,
-      "createdAt": "2024-07-19T14:29:27.026Z",
-      "updatedAt": "2024-07-19T14:29:27.026Z"
+    
     },
     {
       "id": "43865094-f1de-4c89-9110-7ecd86814e66",
@@ -220,11 +219,10 @@ const item =
       "nickname": "usuarioejemplo",
       "given_name": "",
       "picture": "https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png",
-      "role": 1,
+      "role": "Usuario",
       "country": null,
       "enable": true,
-      "createdAt": "2024-07-19T22:37:48.652Z",
-      "updatedAt": "2024-07-19T22:37:48.652Z"
+    
     },
     {
         "id": "2b2523a2-f16a-4475-be6c-1657dc0ca701",
@@ -233,11 +231,10 @@ const item =
         "nickname": "antoniorodrigueztkd",
         "given_name": "",
         "picture": "https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png",
-        "role": 1,
+        "role": "Usuario",
         "country": null,
         "enable": true,
-        "createdAt": "2024-07-19T14:29:27.026Z",
-        "updatedAt": "2024-07-19T14:29:27.026Z"
+       
       },
   ]
 
@@ -249,11 +246,10 @@ const item =
     "nickname": "antoniorodrigueztkd",
     "given_name": "",
     "picture": "https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png",
-    "role": 1,
+    "role": "Usuario",
     "country": null,
     "enable": true,
-    "createdAt": "2024-07-19T14:29:27.026Z",
-    "updatedAt": "2024-07-19T14:29:27.026Z"
+    
   }
 ///////////////////////////////////////////////////////////////////////////////
 const parsedInfo = 
@@ -305,21 +301,21 @@ const parsedDetail = {
       id: 7,
       img: 'https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca2.webp?alt=media&token=bc815cc3-1cee-4c13-83b8-35cfc18c943a',
       text: 'Las diversas partes de la landing page informan al visitante acerca de...',
-      pageId: 1,
+      ProductId: 1
      
     },
     {
       id: 8,
       img: 'https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca3.webp?alt=media&token=9ff22b9f-5329-4e7a-9d18-482704758972',
       text: 'Aqui continua la landing, y en esta seccion se ofrecen consejos utiles...',
-      pageId: 1,
+      ProductId: 1
      
     },
     {
       id: 9,
       img: 'https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca4.webp?alt=media&token=e18e1af8-2dfe-4177-9d4f-29f51b0cb234',
       text: 'Este es el formulario de login, adonde el usuario, mecanico o administrador...',
-      pageId: 1,
+      ProductId: 1
       
     }
   ]
@@ -330,7 +326,7 @@ const parsedItem =
   "id": 9,
   "img": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca4.webp?alt=media&token=e18e1af8-2dfe-4177-9d4f-29f51b0cb234",
   "text": "Este es el formulario de login, adonde el usuario, mecanico o administrador pueden entrar a la pagina. Cabe destacar que la cuenta de usuario asi como los automotores solo pueden ser creados por un mecanico o administrador. (el mecanico puede crear usuarios y sus vehiculos, y solo editar vehiculos, el administrador puede crear usuarios resetear contraseñas, editar y borrar usuarios asi como tambien vehiculos, solo el admin puede editar la landing page).",
-  "pageId": 1
+  "ProductId": 1
 };
 const parsedUsers = 
 
@@ -339,9 +335,9 @@ const parsedUsers =
     id: '2b2523a2-f16a-4475-be6c-1657dc0ca701',
     email: 'antoniorodrigueztkd@gmail.com',
     nickname: 'antoniorodrigueztkd',
-    givenName: '',
-    image: 'https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png',
-    role: 1,
+    given_name: '',
+    picture: 'https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png',
+    role: "Usuario",
     country: null,
     enable: true
   },
@@ -349,9 +345,9 @@ const parsedUsers =
     id: '43865094-f1de-4c89-9110-7ecd86814e66',
     email: 'usuarioejemplo@gmail.com',
     nickname: 'usuarioejemplo',
-    givenName: '',
-    image: 'https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png',
-    role: 1,
+    given_name: '',
+    picture: 'https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png',
+    role: "Usuario",
     country: null,
     enable: true
   },
@@ -359,9 +355,9 @@ const parsedUsers =
     id: '2b2523a2-f16a-4475-be6c-1657dc0ca701',
     email: 'antoniorodrigueztkd@gmail.com',
     nickname: 'antoniorodrigueztkd',
-    givenName: '',
-    image: 'https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png',
-    role: 1,
+    given_name: '',
+    picture: 'https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png',
+    role: "Usuario",
     country: null,
     enable: true
   }
@@ -371,9 +367,9 @@ const parsedUser =
   id: '2b2523a2-f16a-4475-be6c-1657dc0ca701',
   email: 'antoniorodrigueztkd@gmail.com',
   nickname: 'antoniorodrigueztkd',
-  givenName: '',
-  image: 'https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png',
-  role: 1,
+  given_name: '',
+  picture: 'https://c0.klipartz.com/pngpicture/813/118/gratis-png-icono-de-silueta-plantilla-de-persona-en-blanco.png',
+  role: "Usuario",
   country: null,
   enable: true
 }
