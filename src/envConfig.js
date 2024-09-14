@@ -3,7 +3,7 @@ const envFile = process.env.NODE_ENV==='development'? '.env.development' : proce
 dotenv.config({ path:envFile })
 
 const {PORT, SECRET_KEY, DB_USER,  DB_PASSWORD,  DB_HOST,  DB_NAME, RENDER_DB, USER_IMG, GMAIL_USER, GMAIL_APP_PASS, S_USER_EMAIL,
-    S_USER_PASS, }=process.env;
+    S_USER_PASS, DEFAULT_PASS}=process.env;
 
 const LocalDb = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 
@@ -16,6 +16,7 @@ export default {
  UserEmail : S_USER_EMAIL,
  UserPass : S_USER_PASS,
  userImg: USER_IMG,
+ defaultPass : DEFAULT_PASS,
  gmailUser: GMAIL_USER,
  gmailPass: GMAIL_APP_PASS
 }

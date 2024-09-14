@@ -6,6 +6,7 @@ import midd from '../src/middlewares/middlewares.js'
 
 
 
+
 describe('Tests de middlewares',()=>{
     describe('Middleware "loginUser", de validacion de usuario (creacion y login)', ()=>{
         it('Deberia permitir el paso si el email y el password son correctos', async()=>{
@@ -72,7 +73,7 @@ describe('Tests de middlewares',()=>{
     })
     describe('Middleware "updUserMidd" de edicion de usuario', ()=>{
         it('Deberia pasar si los elementos del body estan y son correctos', async()=>{
-            const newData = {email: 'll', given_name: 'll', picture: 'll', country: 'll', role: 1, enable: true}
+            const newData = {email: 'll', given_name: 'll', picture: 'll', country: 'll'}
             const id = "c1d970cf-9bb6-4848-aa76-191f905a2edd"
             const response = await agent
             .put(`/test/user/${id}`)
@@ -82,7 +83,7 @@ describe('Tests de middlewares',()=>{
             expect(response.body).toEqual({ message: 'Passed middleware' })
         })
         it('Deberia arrojar un error si faltan elementos en el body', async()=>{
-            const newData = {email: 'll', picture: 'll', country: 'll', role: 1, enable: true}
+            const newData = {email: 'll', picture: 'll', country: 'll',}
             const id = "c1d970cf-9bb6-4848-aa76-191f905a2edd"
             const response = await agent
             .put(`/test/user/${id}`)
@@ -101,7 +102,50 @@ describe('Tests de middlewares',()=>{
             .expect(400)
             expect(response.body).toEqual('Faltan elementos!!')
         })
-    })
+    });
+    describe('Middleware "userResetPassMidd" de reinicio de contraseña.', ()=>{
+        it('Deberia pasar si el id en el body esta y es correcto', async()=>{
+            const newData = {id: "c1d970cf-9bb6-4848-aa76-191f905a2edd"}
+            const response = await agent
+            .post('/test/reset')
+            .send(newData)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            expect(response.body).toEqual({ message: 'Passed middleware' })
+        })
+        it('Deberia arrojar un error si el id no tuviera un formato valido.', async()=>{
+            const newData = {id: "c1d970cf-9bb6-4848-aa76d191f905a2edd"}
+            const response = await agent
+            .post('/test/reset')
+            .send(newData)
+            .expect('Content-Type', /json/)
+            .expect(400)
+            expect(response.body).toEqual("Id invalido!" )
+        })
+    });
+    describe('Middleware "upgradeUserMidd" de cambio de role y bloqueo de usuario.', ()=>{
+        it('Deberia pasar si el id y el body estan y son correctos', async()=>{
+            const newData = {role: "Usuario", enable: true}
+            const id = "c1d970cf-9bb6-4848-aa76-191f905a2edd"
+            const response = await agent
+            .patch(`/test/upgrade/${id}`)
+            .send(newData)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            expect(response.body).toEqual({ message: 'Passed middleware' })
+        })
+        it('Deberia arrojar un error si el id no tuviera un formato valido.', async()=>{
+            const newData = {role: "Usuario"}
+            const id = "c1d970cf-9bb6-4848-aa76-191f905a2edd"
+            const response = await agent
+            .patch(`/test/upgrade/${id}`)
+            .send(newData)
+            .expect('Content-Type', /json/)
+            .expect(400)
+            expect(response.body).toEqual("Parametros faltantes: enable" )
+        })
+    });
+
     describe('Middleware "createProduct" de creacion de page & item (creacion inicial)', ()=>{
         it('Deberia pasar si el body contiene todos los elementos.', async()=>{
             const body = {title: 'r', landing: 'r', logo: 'r', info_header:'r', info_body: 'r', url: 'r', items: [{img:'r', text: 'r'}, {img:'s', text: 's'}, {img:'t', text: 't'}]}
@@ -168,6 +212,7 @@ describe('Tests de middlewares',()=>{
         })
     })
     describe('Middleware "UpdProduct" de actualizacion de page', ()=>{
+   
         it('Deberia pasar si el body contiene todos los elementos.', async()=>{
             const id = 1;
             const body = {title: 'r', landing: 'r', logo: 'r', info_header:'r', info_body: 'r', url: 'r'}
@@ -189,4 +234,39 @@ describe('Tests de middlewares',()=>{
              expect(response.body).toEqual('Parametros faltantes: landing')
         })
     })
+    describe('Middleware protectParam de proteccion de rutas MVC', ()=>{
+               // Mock para res.render
+        let renderMock;
+
+        beforeEach(() => {
+            renderMock = jest.fn(); // Creamos un mock para res.render
+    });
+        it('Deberia dejar pasar si el id es un entero valido.', async()=>{
+            const id = 2;
+            const response = await agent
+             .get(`/test/page/${id}`)
+             .expect('Content-Type', /json/)
+             .expect(200)
+             expect(response.body).toEqual({ message: 'Passed middleware' })
+        })
+        it('Deberia arrojar un error y renderizar la vista "error" con su respectivo mensaje si el id no es valido.', async()=>{
+            const id = 2.5;
+            await agent
+             .get(`/test/page/${id}`)
+            expect(renderMock).toHaveBeenCalledWith('error', { message: 'Parámetros no permitidos', status: 400 });
+        })
+        })
+        
 })
+
+
+// protectRoute : (req, res, next) => {
+//     const unexpectedParams = Object.keys(req.body).length > 0;
+//     // Verifica que 'id' en la query sea un número si está presente
+//     const id = req.query.id;
+//     const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id))
+//     if (unexpectedParams || (id && !idIsNumber)) {
+//     return res.render('error', { message: 'Parámetros no permitidos', status: 400 })}
+//     next()
+// },
+// }

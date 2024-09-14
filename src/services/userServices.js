@@ -122,6 +122,37 @@ export default {
       return "Contraseña actualizada exitosamente";
     } catch (error) { throw error; }
   },
+  userResetPass: async (id) => {
+    const password = `${env.defaultPass}`
+    try {
+      const user = await User.findByPk(id);
+      if (!user) { eh.throwError('Usuario no hallado', 404)}
+      const edit = help.protectProtocol(user) // Proteger al superusuario contra edicion 
+      if(edit){eh.throwError('No se puede cambiar la contraseña a este usuario. Accion no permitida', 403)}
+      const hashedPassword = await bcrypt.hash(password, 12);
+      const newData = { password: hashedPassword };
+      const newUser = await user.update(newData);
+      if (newUser) {cache.del(`userById_${id}`)}
+      return "Contraseña reiniciada exitosamente";
+    } catch (error) { throw error; }
+  },
+  userUpgrade: async (id, newData) => {
+    try {
+      const user = await User.findByPk(id);
+      if (!user) {eh.throwError('Usuario no hallado', 404)}
+      const edit = help.protectProtocol(user) // Proteger al superusuario contra edicion 
+      const newRole = help.revertScope(newData.role)
+      const updInfo = {
+        role: edit? Number(user.role) : Number(newRole),
+        enable: edit? true : Boolean(newData.enable),
+      };
+      const userUpdated = await user.update(updInfo);
+      if (userUpdated) {
+        cache.del(`userById_${id}`);
+      }
+      return help.userParser(userUpdated, true, true);
+    } catch (error) { throw error; }
+  },
 
   userDel: async (id) => {
     try {

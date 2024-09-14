@@ -15,6 +15,12 @@ serverTest.get('/test/users/:id', mid.middUuid, (req, res) => {
 serverTest.put('/test/user/:id', mid.updUserMidd, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
+serverTest.put('/test/user/:id', mid.upgradeUserMidd, (req, res) => {
+    res.status(200).json({ message: 'Passed middleware' })})
+
+serverTest.post('/test/user', mid.userResetPassMidd, (req, res) => {
+     res.status(200).json({ message: 'Passed middleware' })})
+
 serverTest.post('/test/page', mid.createProduct, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
@@ -27,6 +33,14 @@ serverTest.get('/test/:id', mid.middIntId, (req, res) => {
 serverTest.put('/test/page/:id', mid.updProduct, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
+serverTest.post('/test/reset', mid.userResetPassMidd, (req, res)=>{
+    res.status(200).json({ message: 'Passed middleware' })})
+
+serverTest.patch('/test/upgrade/:id', mid.upgradeUserMidd,(req, res)=>{
+     res.status(200).json({ message: 'Passed middleware' })})
+
+serverTest.get('/test/page/:id', mid.protectParam,(req, res)=>{
+     res.status(200).json({ message: 'Passed middleware' })})
 
 // serverTest.put('/test/:id', (req, res) => {
 //     res.status(200).json({ message: 'Passed middleware' })})

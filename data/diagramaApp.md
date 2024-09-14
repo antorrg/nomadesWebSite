@@ -27,7 +27,9 @@ Este es el diagrama general del proyecto:
 │  │   └── userServices.js
 │  │
 │  ├── utils/
-│  │   └── errorsHandlers.js 
+│  │   └── errorsHandlers.js
+│  │   └── multer.js 
+│  │   └──  
 │  │ 
 │  │
 │  ├── views/

@@ -55,13 +55,23 @@ export default {
     const response = await sv.userChangePass(id, password);
     res.status(200).json(response);
   }),
+  resetPassCtr: eh.catchAsync(async (req, res) => {
+    const { id } = req.body;
+    const response = await sv.userResetPass(id);
+    res.status(200).json(response);
+  }),
 
   verifyPassCtr: eh.catchAsync(async (req, res) => {
     const { id, password } = req.body;
     const response = await sv.verifyPass(id, password);
     res.status(200).json(response);
   }),
-  
+  changeStateUserCtr: eh.catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const newData = req.body;
+    const response = await sv.userUpd(id, newData);
+    res.status(200).json(response);
+  }),
   delUserCtr: eh.catchAsync(async (req, res) => {
     const { id } = req.params;
     const response = await sv.userDel(id);
