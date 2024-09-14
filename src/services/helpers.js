@@ -13,6 +13,7 @@ const cleaner = (cont, bl)=>{
         infoHeader: cont.info_header,
         infoBody: cont.info_body,
         url: cont.url,
+        show: cont.to_show,
         enable: cont.enable,
     };
     return bl? {info, items} : info
@@ -46,6 +47,7 @@ const dataEmptyPage = ()=> {
         infoHeader: 'No hay datos aun',
         infoBody: 'No hay datos aun',
         url: 'No hay datos aun',
+        show: false,
         enable: false,
     }]
 };

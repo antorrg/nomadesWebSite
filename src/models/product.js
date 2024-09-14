@@ -13,10 +13,14 @@ export default (sequelize) => {
         info_header: {type:DataTypes.STRING, allowNull: false},
         info_body:{type: DataTypes.TEXT, allowNull: true},
         url: { type: DataTypes.STRING, allowNull: false},
-        enable: {
+        to_show: {
             type: DataTypes.BOOLEAN,
             defaultValue: true
         },
+        enable: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: true
+      },
         deleteAt:{
           type: DataTypes.BOOLEAN,
           defaultValue:false

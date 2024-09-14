@@ -44,6 +44,7 @@ export const responseProduct =
 {
   "info": {
     "enable": true,
+    "to_show": true,
     "deleteAt": false,
     "id": 1,
     "title": "Boscarol Hnos",
@@ -115,7 +116,8 @@ export const resGetProduct =
       "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite",
       "url": "https://deployprueba.vercel.app/",
-      "enable": true
+      "enable": true,
+      "show": true,
     }
 ]
 
@@ -129,7 +131,8 @@ export const resDetailProduct =
       "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite",
       "url": "https://deployprueba.vercel.app/",
-      "enable": true
+      "enable": true,
+      "show": true
     },
     "items": [
       {
@@ -189,7 +192,8 @@ logo: "url",
 info_header: "Landing page y administracion de vehiculos y clientes para un taller mecanico",
 info_body: "Esta pagina web fue creada primero como una landing page con react.js con vite",
 url: "https://deployprueba.vercel.app/",
-enable: false
+enable: false,
+to_show: true,
 }
 export const wrongBody =
 {
@@ -198,7 +202,8 @@ landing: "url444",
 logo: "url",
 info_body: "Esta pagina web fue creada primero como una landing page con react.js con vite",
 url: "https://deployprueba.vercel.app/",
-enable: false
+enable: false,
+to_show: true
 }
 export const productUpdResponse = 
 {
@@ -210,6 +215,7 @@ export const productUpdResponse =
       "info_body": "Esta pagina web fue creada primero como una landing page con react.js con vite",
       "url": "https://deployprueba.vercel.app/",
       "enable": false,
+      "to_show": true,
       "deleteAt": false,
     }
 
@@ -233,7 +239,6 @@ export const productUpdResponse =
         "text": "En este caso este es el campo que actualize en esta ocasion.",
         "ProductId": 1,
         "enable": true,
-        //"createdAt": expect.any(Date),
-        //"updatedAt": expect.any(Date),
+   
     }
    

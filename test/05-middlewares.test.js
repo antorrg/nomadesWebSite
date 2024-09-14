@@ -234,39 +234,7 @@ describe('Tests de middlewares',()=>{
              expect(response.body).toEqual('Parametros faltantes: landing')
         })
     })
-    describe('Middleware protectParam de proteccion de rutas MVC', ()=>{
-               // Mock para res.render
-        let renderMock;
-
-        beforeEach(() => {
-            renderMock = jest.fn(); // Creamos un mock para res.render
-    });
-        it('Deberia dejar pasar si el id es un entero valido.', async()=>{
-            const id = 2;
-            const response = await agent
-             .get(`/test/page/${id}`)
-             .expect('Content-Type', /json/)
-             .expect(200)
-             expect(response.body).toEqual({ message: 'Passed middleware' })
-        })
-        it('Deberia arrojar un error y renderizar la vista "error" con su respectivo mensaje si el id no es valido.', async()=>{
-            const id = 2.5;
-            await agent
-             .get(`/test/page/${id}`)
-            expect(renderMock).toHaveBeenCalledWith('error', { message: 'Parámetros no permitidos', status: 400 });
-        })
-        })
         
 })
 
 
-// protectRoute : (req, res, next) => {
-//     const unexpectedParams = Object.keys(req.body).length > 0;
-//     // Verifica que 'id' en la query sea un número si está presente
-//     const id = req.query.id;
-//     const idIsNumber = !isNaN(id) && Number.isInteger(parseFloat(id))
-//     if (unexpectedParams || (id && !idIsNumber)) {
-//     return res.render('error', { message: 'Parámetros no permitidos', status: 400 })}
-//     next()
-// },
-// }

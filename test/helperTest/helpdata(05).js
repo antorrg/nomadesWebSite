@@ -10,6 +10,7 @@ const pages =
       "info_body": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
       "url": "https://deployprueba.vercel.app/",
       "enable": true,
+      "to_show": true,
       "deleteAt": false,
       "createdAt": "2024-07-19T03:22:33.561Z",
       "updatedAt": "2024-07-19T03:22:33.561Z",
@@ -61,6 +62,7 @@ const pages =
         "info_body": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
         "url": "https://deployprueba.vercel.app/",
         "enable": true,
+        "to_show": true,
         "deleteAt": false,
         "createdAt": "2024-07-19T03:22:33.561Z",
         "updatedAt": "2024-07-19T03:22:33.561Z",
@@ -112,6 +114,7 @@ const pages =
         "info_body": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
         "url": "https://deployprueba.vercel.app/",
         "enable": true,
+        "to_show": true,
         "deleteAt": false,
         "createdAt": "2024-07-19T03:22:33.561Z",
         "updatedAt": "2024-07-19T03:22:33.561Z",
@@ -164,6 +167,7 @@ const pages =
  "info_body": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
  "url": "https://deployprueba.vercel.app/",
  "enable": true,
+ "to_show": true,
  "deleteAt": false,
  "createdAt": "2024-07-19T03:22:33.561Z",
  "updatedAt": "2024-07-19T03:22:33.561Z",
@@ -262,6 +266,7 @@ const parsedInfo =
     "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
     "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
     "url": "https://deployprueba.vercel.app/",
+    "show": true,
     "enable": true
   },
   {
@@ -272,6 +277,7 @@ const parsedInfo =
       "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
       "url": "https://deployprueba.vercel.app/",
+      "show": true,
       "enable": true
     },
     {
@@ -282,6 +288,7 @@ const parsedInfo =
       "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
       "url": "https://deployprueba.vercel.app/",
+      "show": true,
       "enable": true
     }
 ]
@@ -294,7 +301,8 @@ const parsedDetail = {
     infoHeader: 'Landing page y administracion de vehiculos y clientes para un taller mecanico',
     infoBody: 'Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller',
     url: 'https://deployprueba.vercel.app/',
-    enable: true
+    enable: true,
+    show: true,
   },
   items: [
     {
