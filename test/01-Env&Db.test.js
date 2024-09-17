@@ -1,5 +1,5 @@
 import env from '../src/envConfig.js'
-import {User, Product, Item} from '../src/db.js'
+import {User, Product, Item, LandingPage} from '../src/db.js'
 
 
 
@@ -21,8 +21,10 @@ describe('Iniciando tests, probando variables de entorno del archivo "envConfig.
         const users = await User.findAll()
         const products = await Product.findAll()
         const items = await Item.findAll()
+        const landing = await LandingPage.findAll()
         expect(users).toEqual([]);
         expect(products).toEqual([]);
         expect(items).toEqual([]);
+        expect(landing).toEqual([])
     })
 })
