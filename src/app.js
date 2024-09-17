@@ -3,6 +3,8 @@ import { fileURLToPath } from "url";
 import path from "path";
 import morgan from "morgan";
 import cors from "cors";
+import env from './envConfig.js'
+import { configureCloudinary } from "./utils/cloudinary.js";
 import sm from "./middlewares/serverMiddlewares.js";
 import {sessionMiddle} from "./middlewares/validation/sessionMiddle.js";
 import mainRouter from './routes/mainRouter.js'
@@ -12,8 +14,12 @@ const fileName = fileURLToPath(import.meta.url);
 const dirname = path.dirname(fileName);
 console.log('dirname: ',dirname);
 
-
 const server = express();
+configureCloudinary({
+    cloud_name:env.CloudName,
+    api_key:env.CloudApiKey,
+    api_secret: env.CloudApiSecret
+});
 server.use(morgan("dev"));
 server.use(cors());
 server.use(cookieParser())

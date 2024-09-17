@@ -45,7 +45,7 @@ describe('Funciones de Service/ product. CRUD basico completo de ambas tablas.',
         })
     })
     describe('Funciones "getProducts", "getById" y "getDetail" busqueda de productos, producto e item.', ()=>{
-        describe('Funcion "getHome"', ()=>{
+        describe('Funcion "getProduct"', ()=>{
             it('Deberia retornar un arreglo con las productos', async()=>{
                 const response = await prd.getProduct()
                 expect(response.products).toEqual(help.resGetProduct)

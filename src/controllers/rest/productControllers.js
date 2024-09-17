@@ -1,6 +1,5 @@
-import eh from "../../middlewares/middlewares.js";
-import serv from "../../services/project.js";
-import sv from "../../services/users.js";
+import eh from "../../utils/errorHandlers.js"
+import serv from "../../services/productServices.js";
 
 export default {
   createController: eh.catchAsync(async (req, res) => {
@@ -30,6 +29,12 @@ export default {
     res.status(200).json(response);
   }),
 
+  delItemController: eh.catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const response = await serv.delItem(id);
+    res.status(200).json(response);
+  }),
+
   updController: eh.catchAsync(async (req, res) => {
     const { id } = req.params;
     const newData = req.body;
@@ -44,7 +49,7 @@ export default {
     res.status(200).json(response);
   }),
 
-  getProjectHand: eh.catchAsync(async (req, res) => {
+  getProductHand: eh.catchAsync(async (req, res) => {
     const response = await serv.getHome();
     if(response.cache===true){
       res.status(203).json(response.pages)
@@ -53,7 +58,7 @@ export default {
     }
   }),
 
-  getProjectById: eh.catchAsync(async (req, res) => {
+  getProductById: eh.catchAsync(async (req, res) => {
     const { id } = req.params;
     const response = await serv.getById(id);
     res.status(200).json(response);

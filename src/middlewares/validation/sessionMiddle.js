@@ -83,7 +83,6 @@ export const generateToken = (user, session)=>{
     };
 export const verifyToken = (req, res, next)=>{
      let token = req.headers['x-access-token'] || req.headers.authorization;
-            try{
             if(!token){eh.throwError('Acceso no autorizado. Token no proporcionado', 401)}
             if (token.startsWith('Bearer')) {
             // Eliminar el prefijo 'Bearer ' del token
@@ -105,9 +104,8 @@ export const verifyToken = (req, res, next)=>{
 
         })
        
-    }catch(error){throw error}
     };
-export const checkRole = eh.catchAsync((allowedRoles) => {
+export const checkRole = (allowedRoles) => {
         return (req, res, next) => {
           const {userRole}= req.userInfo;
           //const userRole = req.user.role; // asumiendo que el rol está en req.user después de la autenticación
@@ -117,10 +115,10 @@ export const checkRole = eh.catchAsync((allowedRoles) => {
             next();
           } else {
             // El usuario no tiene el rol necesario, rechazar la solicitud
-            res.status(403).json({ error: 'Acceso no autorizado' });
+            eh.throwError('Acceso no autorizado', 403)
           }
         };
-      });
+      };
 
 //Este es un modelo de como recibe el parámetro checkRole:
   //todo   app.get('/ruta-protegida', checkRole(['admin']), (req, res) => {
