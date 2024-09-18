@@ -2,6 +2,7 @@ import express from 'express'
 import ctr from '../controllers/rest/usersControllers.js'
 import mdd from '../middlewares/middlewares.js'
 import auth from '../middlewares/validation/index.js'
+import cont from '../controllers/rest/landingController.js'
 
 
 const userRouter = express.Router()
@@ -17,4 +18,5 @@ userRouter.post('/user/change', auth.verifyToken, auth.checkRole([0, 9]), mdd.us
 userRouter.delete('/user/:id', auth.verifyToken, auth.checkRole([0, 9]), mdd.middUuid, ctr.delUserCtr)
 
 userRouter.get('/user', auth.verifyToken, ctr.getUserController)//experimental, debe borrarse
+userRouter.get('/pepito', cont.getLandingController)
 export default userRouter;

@@ -1,7 +1,7 @@
 import { DataTypes } from'sequelize';
 
 export default (sequelize) => {
-    sequelize.define("LandingPage", {
+    sequelize.define("Landing", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -15,7 +15,11 @@ export default (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
           },
-          text: {
+          info_header:{
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          description: {
             type: DataTypes.TEXT,
             allowNull: false,
           },

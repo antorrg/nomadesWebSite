@@ -51,6 +51,16 @@ const dataEmptyPage = ()=> {
         enable: false,
     }]
 };
+const dataEmptyLanding = ()=> {
+    return [{
+        id: false,
+        title: 'Titulo ',
+        infoHeader: 'Nomades web site.',
+        image: 'https://res.cloudinary.com/dt1lpgumr/image/upload/c_scale,w_auto/f_auto,q_auto/defaultLanding.webp?_a=BAMAH2TE0',
+        description: 'Esta es una descripcion del producto mostrado hecha para mostrar el contenido de la pagina',
+        enable: true,
+    }]
+};
 function userParser (info, isObj, valid) { 
     return isObj? parser(info, valid) :  info.map((dt)=> parser(dt, true))
  };
@@ -108,6 +118,19 @@ const emptyUser = ()=>{
 const protectProtocol = (data)=>{
     return data.role === 9? true: false;
    }
+const cleanerLanding = (info, isObject)=>{
+    return isObject? parsed(info) : info.map((inf)=>parsed(inf))
+}
+const parsed = (data)=>{
+    return {
+        id:data.id,
+        image:data.image,
+        title:data.title,
+        info_header:data.info_header,
+        description:data.description,
+        enable: data.enable
+    }
+}
 export default {
 productCleaner,
 aux,
@@ -117,7 +140,9 @@ userParser,
 scope,
 revertScope,
 emptyUser,
-protectProtocol 
+protectProtocol,
+dataEmptyLanding,
+cleanerLanding
 
 };
  
