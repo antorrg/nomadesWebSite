@@ -1,0 +1,10 @@
+{
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.pug": ["@parcel/transformer-pug"]
+  },
+  "optimizers": {
+    "*.css": ["@parcel/optimizer-cssnano"],
+    "*.js": ["@parcel/optimizer-terser"]
+  }
+}

@@ -12,6 +12,7 @@ import cookieParser from "cookie-parser";
 
 const fileName = fileURLToPath(import.meta.url);
 const dirname = path.dirname(fileName);
+const rootDirname = path.resolve()
 console.log('dirname: ',dirname);
 
 const server = express();
@@ -24,13 +25,22 @@ server.use(morgan("dev"));
 server.use(cors());
 server.use(cookieParser())
 server.use(sessionMiddle);
-// Aqui se declara el servidor mvc, quitar esta linea luego.
-//server.set("views", path.join(dirname, "views"))
-//server.set("view-engine", "pug")
-//server.use(express.static(dirname, "public"))
-//server.use(express.urlencoded({extended:true}))
+server.use(express.urlencoded({extended:true}))
 server.use(express.json());
 server.use(sm.validJson);
+// Aqui se declara el servidor mvc.
+server.set("views", path.join(dirname, "views"))
+server.set("view-engine", "pug")
+
+if(env.Status==='production'){
+server.use(express.static(path.join(rootDirname, 'dist')))
+
+}else if(env.Status==='development'){
+server.use(express.static(path.join(dirname, 'public')))
+
+}else{
+server.use(express.static(path.join(dirname, 'public')))
+}
 
 server.use(mainRouter)
 
