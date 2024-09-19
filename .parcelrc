@@ -6,5 +6,7 @@
   "optimizers": {
     "*.css": ["@parcel/optimizer-cssnano"],
     "*.js": ["@parcel/optimizer-terser"]
-  }
+  },
+  "resolvers": ["...", "@parcel/resolver-default"]
+  
 }

@@ -1,10 +1,14 @@
 import sv from '../../services/productServices.js'
+import sl from '../../services/landingService.js'
 import eh from '../../utils/errorHandlers.js'
 
 export default {
     getLanding : eh.catchAsyncMVC(async(req, res)=>{
-        const info = await sv.getProduct()
-        res.render('index', {info, isAuthenticated: req.session.isAuthenticated})
+        const land = await sl.getOneLanding()
+        const infoArray = await sv.getProduct()
+        const info = infoArray.products
+        console.log('info en cache: ',infoArray.cache)
+        res.render('index', {land, info, isAuthenticated: req.session.isAuthenticated})
     }),
     getProductById : eh.catchAsyncMVC(async(req, res)=>{
         const {id}=req.params;
@@ -23,5 +27,8 @@ export default {
     }),
     about : eh.catchAsyncMVC(async(req, res)=>{
         res.render('about')
+    }),
+    probar : eh.catchAsyncMVC(async(req, res)=>{
+        res.render('error', { message: 'Probando el error', status: 400 })
     }),
 }

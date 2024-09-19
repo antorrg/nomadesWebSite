@@ -52,14 +52,14 @@ const dataEmptyPage = ()=> {
     }]
 };
 const dataEmptyLanding = ()=> {
-    return [{
+    return {
         id: false,
-        title: 'Titulo ',
+        title: 'Pagina web con ejemplos ',
         infoHeader: 'Nomades web site.',
         image: 'https://res.cloudinary.com/dt1lpgumr/image/upload/c_scale,w_auto/f_auto,q_auto/defaultLanding.webp?_a=BAMAH2TE0',
-        description: 'Esta es una descripcion del producto mostrado hecha para mostrar el contenido de la pagina',
+        description: 'Esta es una descripcion del producto mostrado hecha para exhibir el contenido de la pagina',
         enable: true,
-    }]
+    }
 };
 function userParser (info, isObj, valid) { 
     return isObj? parser(info, valid) :  info.map((dt)=> parser(dt, true))

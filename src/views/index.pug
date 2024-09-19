@@ -1,30 +1,57 @@
 doctype html
 html(lang="es")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Nomades Cabañas de pastores
-        link(href="/styles.css" rel="stylesheet")
-        link(rel='icon' href='/images/nomades2.png' )
-    body 
-      .cover-container1.d-flex.w-100.h-100.p-3.mx-auto.flex-column 
-        header.mb-auto 
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description" content=land.infoHeader)
+    meta(name="author" content="Antorrg. Antonio Ricardo Rodriguez Gramajo")
+    title Nomades Cabañas de pastores
+    link(href="/styles.css" rel="stylesheet")
+    link(rel='icon' href='/images/nomades2.png')
+  body
+    .min-vh-100.cover-container1.d-flex.w-100.p-3.mx-auto.flex-column(style=`background-image: url('${land.image || 'https://scontent.faep9-1.fna.fbcdn.net/v/t39.30808-6/273706860_2931088370514441_4950906474272199784_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=X53bAmSG_lYQ7kNvgFuarmz&_nc_ht=scontent.faep9-1.fna&_nc_gid=ApSLyvJxyybnTnjfCJFK6dw&oh=00_AYDZumEmiq_mR9bE2K7gO1kT-BBpxANblpaBPWSdHsPhTw&oe=66ECCA4B'}')`)
+      header.mb-auto
           div
-            h3.float-md-start.mb-0 Nomades: Cabañas de pastores 
+            h3.float-md-start.mb-0.caption-nav.colon-link
+              | Nomades
+              a.nav-link(href="/error") : 
+              |  Cabañas de Pastores
             nav.nav.nav-masthead.justify-content-center.float-md-end.caption-nav
               a.nav-link.fw-bold.py-1.px-0.active(aria-current='page' href='/') Home
-              a.nav-link.fw-bold.py-1.px-0.active(href='#') Features
-              a.nav-link.fw-bold.py-1.px-0.active(href='/contacto') Contact
-        main.px-3 
-          .caption-title
-            h1 Cover your page 
-            p.lead Cover is a one-page template for building sample and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.
-            p.lead 
-            a.btn.btn-lg.btn-ligth.fw-bold.border-white.bg-white(href='/') Learn more
-        
-        footer.mt-auto.text-white-50 
-          p Hechas en Monte 
-            a.text-white(href='#') ,
-              p por 
-                a.text-white(href="#") nom
-    script(type="module" src= '/main.js')
+              a.nav-link.fw-bold.py-1.px-0.active(href='#') Login
+              a.nav-link.fw-bold.py-1.px-0.active(href='/contacto') Contacto
+              a.nav-link.fw-bold.py-1.px-0.active(href='#') Acerca de:
+      section.px-3
+      .caption-title
+        h1= land.title
+        p.cover-p= land.description
+        p.lead
+          a.btn.btn-lg.btn-ligth.fw-bold.border-white.bg-white(href='/error') Vea más:
+      footer.mt-auto.text-white-50.p12
+         
+    
+    section.carousel-section
+      .container-fluid
+        #myCarousel.carousel.slide(data-bs-ride="carousel")
+            .carousel-indicators
+              each val, index in info
+                button(type="button", data-bs-target="#myCarousel", data-bs-slide-to=index, class=(index === 0 ? 'active' : ''), aria-current=(index === 0 ? 'true' : ''), aria-label=`Slide ${index + 1}`)
+            .carousel-inner
+              each val, index in info
+                .carousel-item(class=(index === 0 ? 'active' : ''))
+                  img(src=val.landing, class="d-block w-100", alt=val.title)
+                  .container
+                    .carousel-caption(class=(index === 0 ? 'text-start' : (index === info.length - 1 ? 'text-end' : '')))
+                      h1= val.title
+                      p= val.infoHeader
+                      p
+                        a.btn.btn-lg.btn-primary(href=val.url, target="_blank") Visite el sitio
+            button.carousel-control-prev(type="button", data-bs-target="#myCarousel", data-bs-slide="prev")
+              span.carousel-control-prev-icon(aria-hidden="true")
+              span.visually-hidden Previous
+            button.carousel-control-next(type="button", data-bs-target="#myCarousel", data-bs-slide="next")
+              span.carousel-control-next-icon(aria-hidden="true")
+              span.visually-hidden Next
+    section
+      img(src=land.image alt=land.title class="d-block w-100")
+  script(type="module" src='/main.js')

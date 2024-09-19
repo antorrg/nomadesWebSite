@@ -30,13 +30,14 @@ server.use(express.json());
 server.use(sm.validJson);
 // Aqui se declara el servidor mvc.
 server.set("views", path.join(dirname, "views"))
-server.set("view-engine", "pug")
+server.set("view engine", "pug")
+
 
 if(env.Status==='production'){
 server.use(express.static(path.join(rootDirname, 'dist')))
 
-}else if(env.Status==='development'){
-server.use(express.static(path.join(dirname, 'public')))
+}else if(env.Status === 'preview'){
+server.use(express.static(path.join(rootDirname, 'dist')))
 
 }else{
 server.use(express.static(path.join(dirname, 'public')))

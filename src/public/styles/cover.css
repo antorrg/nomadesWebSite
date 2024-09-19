@@ -1,7 +1,19 @@
 
 
+
+
+.cover-container {
+  max-width: 42em;
+}
+.carousel-section{
+  position:relative;
+}
+
+/*
+ * Header
+ */
  .cover-container1 {
-  background-image: url('https://scontent.faep9-1.fna.fbcdn.net/v/t39.30808-6/273706860_2931088370514441_4950906474272199784_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=X53bAmSG_lYQ7kNvgFuarmz&_nc_ht=scontent.faep9-1.fna&_nc_gid=ApSLyvJxyybnTnjfCJFK6dw&oh=00_AYDZumEmiq_mR9bE2K7gO1kT-BBpxANblpaBPWSdHsPhTw&oe=66ECCA4B');
+  margin-top:0;
   background-size: cover; /* Para que la imagen cubra todo el fondo */
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -11,6 +23,20 @@
   justify-content: center;
   align-items: center; */
 }
+.colon-link {
+  /* vertical-align: middle; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap:0.5rem;
+}
+
+.cover-p {
+  font-size: 1.30rem; /* Tamaño del texto de la clase lead */
+  font-weight: 500; /* Un poco más grueso que normal, pero no bold */
+  line-height: 1.5;
+}
 /* Custom default button */
 .btn-light,
 .btn-light:hover,
@@ -19,26 +45,7 @@
   text-shadow: none; /* Prevent inheritance from `body` */
 }
 
-
-/*
- * Base structure
- */
-
-body {
-  /* text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5); */
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-  color:black;
-}
-
-.cover-container {
-  max-width: 42em;
-}
-
-
-/*
- * Header
- */
-
+ 
 .nav-masthead .nav-link {
   color: rgba(255, 255, 255, .5);
   border-bottom: .25rem solid transparent;

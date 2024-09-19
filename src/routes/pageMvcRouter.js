@@ -13,5 +13,7 @@ pageRouter.get('/contacto', ctr.contact)
 
 pageRouter.get('/acerca', ctr.about)
 
+pageRouter.get('/error', ctr.probar)
+
 
 export default pageRouter;

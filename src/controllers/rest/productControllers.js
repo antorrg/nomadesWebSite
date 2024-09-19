@@ -5,7 +5,7 @@ export default {
   createController: eh.catchAsync(async (req, res) => {
     const { title, landing, logo, info_header, info_body, url, items } =
       req.body;
-    const response = await serv.createHome(
+    const response = await serv.createProduct(
       title,
       landing,
       logo,
@@ -25,7 +25,7 @@ export default {
 
   delController: eh.catchAsync(async (req, res) => {
     const { id } = req.params;
-    const response = await serv.delHome(id);
+    const response = await serv.delProduct(id);
     res.status(200).json(response);
   }),
 
@@ -38,7 +38,7 @@ export default {
   updController: eh.catchAsync(async (req, res) => {
     const { id } = req.params;
     const newData = req.body;
-    const response = await serv.updHome(id, newData);
+    const response = await serv.updProduct(id, newData);
     res.status(200).json(response);
   }),
 
@@ -50,11 +50,11 @@ export default {
   }),
 
   getProductHand: eh.catchAsync(async (req, res) => {
-    const response = await serv.getHome();
+    const response = await serv.getProduct();
     if(response.cache===true){
-      res.status(203).json(response.pages)
+      res.status(203).json(response.products)
     }else{
-    res.status(200).json(response.pages);
+    res.status(200).json(response.products);
     }
   }),
 
