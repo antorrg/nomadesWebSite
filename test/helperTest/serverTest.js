@@ -27,6 +27,9 @@ serverTest.post('/test/page', mid.createProduct, (req, res) => {
 serverTest.post('/test/item', mid.createItem, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
+serverTest.put('/test/item/:id', mid.updateItem, (req, res) => {
+    res.status(200).json({ message: 'Passed middleware' })})
+
 serverTest.get('/test/:id', mid.middIntId, (req, res) => {
     res.status(200).json({ message: 'Passed middleware' })})
 
@@ -42,8 +45,11 @@ serverTest.patch('/test/upgrade/:id', mid.upgradeUserMidd,(req, res)=>{
 serverTest.get('/test/page/:id', mid.protectParam,(req, res)=>{
      res.status(200).json({ message: 'Passed middleware' })})
 
-// serverTest.put('/test/:id', (req, res) => {
-//     res.status(200).json({ message: 'Passed middleware' })})
+serverTest.post('/test/land', mid.landingCreate, (req, res) => {
+    res.status(201).json({ message: 'Passed middleware' })})
+
+serverTest.put('/test/land/:id', mid.landingUpdate, (req, res) => {
+    res.status(200).json({ message: 'Passed middleware' })})
 
 serverTest.use((err, req, res, next)=>{
     const status = err.status ||500

@@ -6,9 +6,9 @@
 // import * as store from './helperTest/testStore.js';
 
 
-xdescribe('Test de rutas Usuario, Project.', () => {
+xdescribe('Test de rutas Usuario, Project, Landing', () => {
     
-    describe('Test de rutas de usuario: "/api/user": ', () => {
+    describe('Test de rutas de usuario: "/api/v1/user": ', () => {
         describe('Ruta "user/create": Ruta de creacion de usuario', () => {
             it('Deberia responder con status 201 y retornar el usuario', async () => {
                 const email = "josenomeacuerdo@hotmail.com";
@@ -158,7 +158,7 @@ xdescribe('Test de rutas Usuario, Project.', () => {
             })
         })
     })
-    describe('Test de rutas Project: "/api/project": CRUD basico completo:', () => {
+    describe('Test de rutas Product: "/api/product": CRUD basico completo:', () => {
         describe('Rutas "/project/create", "/project/create/item", Creacion de proyecto e item.', () => {
             it('Deberia crear un proyecto con algunos items (más de uno)', async () => {
                 const response = await agent

@@ -1,5 +1,6 @@
 import midd from '../src/middlewares/middlewares.js'; // Ajusta la ruta según sea necesario
 
+
 describe('Middleware protectParam y protectRoute de protección de rutas MVC', () => {
   let req, res, next;
 
@@ -51,5 +52,4 @@ describe('Middleware protectParam y protectRoute de protección de rutas MVC', (
     })
   })
 });
-
 

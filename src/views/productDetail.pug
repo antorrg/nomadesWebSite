@@ -1,0 +1,124 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description", content=info.infoHeader)
+    meta(name="author", content="Antorrg. Antonio Ricardo Rodriguez Gramajo")
+    meta(name="generator", content="Hugo 0.104.2")
+    title Producto #{info.title}
+    link(rel="icon", href="/images/favicon.png")
+    link(href="/css/bootstrap.min.css" rel="stylesheet")
+    style.
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+  body
+    header
+      .collapse.bg-dark(id="navbarHeader")
+        .container
+          .row
+            .col-sm-8.col-md-7.py-4
+              h4.text-white=info.title
+              p.text-muted=info.infoHeader
+            .col-sm-4.offset-md-1.py-4
+              h4.text-white Contact
+              ul.list-unstyled
+                li
+                  a.text-white(href="https://www.linkedin.com/in/antonio-ricardo-rodriguez-gramajo-9b4342277/" target='_blank') Follow on Linkedin
+                li
+                  a.text-white(href="#") Like on Facebook
+                li
+                  a.text-white(href="/contacto") Envieme un email
+      .navbar.navbar-dark.bg-dark.shadow-sm
+        .container
+          p.navbar-brand.d-flex.align-items-center(href="http://www.w3.org/2000/svg")
+            svg(xmlns="http://www.w3.org/2000/svg", width="20", height="20", fill="none", stroke="currentColor", stroke-linecap="round", stroke-linejoin="round", stroke-width="2", aria-hidden="true", class="me-2", viewBox="0 0 24 24")
+              path(d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z")
+              circle(cx="12", cy="13", r="4")
+            strong Mis Proyectos
+          button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarHeader", aria-controls="navbarHeader", aria-expanded="false", aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+    main
+      section.py-5.text-center.container
+        .row.py-lg-5
+          .col-lg-6.col-md-8.mx-auto
+            h1.fw-light Proyecto #{info.title}
+            p.lead.text-muted=info.infoBody
+            p
+              a.btn.btn-primary.my-2(href=info.url target="_blank") Ir al sitio web
+              a.btn.btn-secondary.my-2(href="../") Volver
+      .album.py-5.bg-light
+        .container
+          - const chunk = (arr, size) => {
+          -   return arr.reduce((acc, _, i) => {
+          -     if (i % size) {
+          -       acc[acc.length - 1].push(arr[i]);
+          -     } else {
+          -       acc.push([arr[i]]);
+          -     }
+          -     return acc;
+          -   }, []);
+          - };
+          - const rows = chunk(items, 3);
+          each row in rows
+            .row.row-cols-1.row-cols-sm-2.row-cols-md-3.g-3
+              each item in row
+                .col
+                  .card.shadow-sm
+                    img.card-img-top(src=item.img, alt='Card image')
+                    .card-body
+                      p.card-text= item.text
+                      .d-flex.justify-content-between.align-items-center
+                        .btn-group
+                          a.btn.btn-sm.btn-outline-secondary(href=`/detalles?img=${item.img}&id=${item.id}`) Ver mas
+    footer.text-muted.py-5
+      .container
+        p.float-end.mb-1
+          a.btn.btn-primary(href="#") Volver arriba
+        p.mb-1 Album example is &copy; Bootstrap, but please download and customize it for yourself!
+        p.mb-0
+          | New to Bootstrap? 
+          a(href="/") Visit the homepage
+  script(src="/js/bootstrap.bundle.min.js")

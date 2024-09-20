@@ -9,7 +9,8 @@
     "build": "cross-env NODE_ENV=production parcel build src/public/main.js src/public/styles.css --dist-dir dist  --no-source-maps --no-content-hash",
     "preview": "cross-env NODE_ENV=preview nodemon index.js",
     "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
-    "test:cov": "cross-env NODE_ENV=test jest --detectOpenHandles --coverage"
+    "test:cov": "cross-env NODE_ENV=test jest --detectOpenHandles run: 01 run: 09 --coverage"
+
   },
   "author": "Antorrg",
   "license": "ISC",

@@ -1,0 +1,29 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Contacto
+    link(rel="icon", href="/images/favicon.png")
+    link(rel="stylesheet" href="css/showAlert.css")
+    link(rel="stylesheet" href="css/contact.css")
+  body
+    section.container
+      div
+        h2 Contacto:
+      div.contactForm
+        form#contactForm
+          .row
+            .col-md-12
+              input.form-control.my-2(name="email" id="email" type="email" placeholder="Su email...")
+              p#errorEmail.error
+            .col-md-12
+              input.form-control.my-2(name="subject" id="subject" type="text" placeholder="Asunto...")
+              p#errorSubject.error
+            .col-md-12
+              textarea.form-control.my-2(name="message" id="message" placeholder="Su mensaje...")
+              p#errorMessage.error
+          button#submitButton(type="submit" disabled) Enviar
+      button#cancelButton(type="button") Cancelar
+    script(src = "js/showAlert.js")
+    script(src = "js/contact.js")
