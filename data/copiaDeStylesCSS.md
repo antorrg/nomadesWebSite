@@ -1,12 +1,13 @@
-@import "./styles/bootstrap.min.css";
-@import "./styles/bootstrap.min.css.map";
 @import "./styles/cover.css";
 @import "./styles/carousel.css";
 @import "./styles/error.css";
+@import "./styles/adminLayout.css";
+@import "./styles/bootstrap.css";
+@import "./styles/bootstrap.css.map";
 
 
 body {
-  /* padding-top: 3rem;  */
+  
   padding-bottom: 3rem;
   color: rgb(var(--bs-tertiary-color-rgb));
 }

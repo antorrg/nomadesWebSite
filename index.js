@@ -25,7 +25,7 @@ server.listen(env.Port, async()=>{
     try {
     await sequelize.sync({ force: false })
     await initialUser()
-    console.log(`Server is listening in http://localhost:${env.Port}\nServer in ${env.Status} ✔️ .\nEverything is allright 😉!!`)
+    console.log(`Server is listening at http://localhost:${env.Port}\nServer in ${env.Status} ✔️ .\nEverything is allright 😉!!`)
     } catch (error) {
      console.error('Error syncing database: ', error)
     }
