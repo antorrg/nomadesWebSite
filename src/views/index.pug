@@ -20,7 +20,7 @@ html(lang="es")
               a.nav-link.fw-bold.py-1.px-0.active(aria-current='page' href='/') Home
               a.nav-link.fw-bold.py-1.px-0.active(href='#') Login
               a.nav-link.fw-bold.py-1.px-0.active(href='/contacto') Contacto
-              a.nav-link.fw-bold.py-1.px-0.active(href='#') Acerca de:
+              a.nav-link.fw-bold.py-1.px-0.active(href='/acerca') Acerca de:
       section.px-3
       .caption-title
         h1= land.title
@@ -44,13 +44,13 @@ html(lang="es")
                       h1= val.title
                       p= val.infoHeader
                       p
-                        a.btn.btn-lg.btn-primary(href=val.url, target="_blank") Visite el sitio
-            button.carousel-control-prev(type="button", data-bs-target="#myCarousel", data-bs-slide="prev")
-              span.carousel-control-prev-icon(aria-hidden="true")
-              span.visually-hidden Previous
-            button.carousel-control-next(type="button", data-bs-target="#myCarousel", data-bs-slide="next")
-              span.carousel-control-next-icon(aria-hidden="true")
-              span.visually-hidden Next
+                        a.btn.btn-lg.btn-secondary(href=`/detalles/${val.id}` target="_blank") Visite el sitio
+                  button.carousel-control-prev(type="button", data-bs-target="#myCarousel", data-bs-slide="prev")
+                    span.carousel-control-prev-icon(aria-hidden="true")
+                    span.visually-hidden Previous
+                  button.carousel-control-next(type="button", data-bs-target="#myCarousel", data-bs-slide="next")
+                    span.carousel-control-next-icon(aria-hidden="true")
+                    span.visually-hidden Next
 
     .container.marketing.mx-3
       .row

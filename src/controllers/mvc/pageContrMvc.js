@@ -29,7 +29,7 @@ export default {
 
     }),
     about : eh.catchAsyncMVC(async(req, res)=>{
-        res.render('layouts/navbar')
+        res.render('admin/product.pug')
     }),
     probar : eh.catchAsyncMVC(async(req, res)=>{
         res.render('error', { message: 'Probando el error', status: 400 })
