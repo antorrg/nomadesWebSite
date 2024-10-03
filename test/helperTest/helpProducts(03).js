@@ -2,10 +2,8 @@ export const bodyProduct =
 {        
     "title": "Boscarol Hnos",
     "landing": "url",
-    "logo": "url",
     "info_header": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
     "info_body": "Esta pagina web fue creada primero como una landing page con react.js con vite",
-    "url": "https://deployprueba.vercel.app/",
 
   "items": [
     {
@@ -49,10 +47,8 @@ export const responseProduct =
     "id": 1,
     "title": "Boscarol Hnos",
     "landing": "url",
-    "logo": "url",
     "info_header": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
     "info_body": "Esta pagina web fue creada primero como una landing page con react.js con vite",
-    "url": "https://deployprueba.vercel.app/",
    
   },
   "items": [
@@ -112,10 +108,8 @@ export const resGetProduct =
       "id": 1,
       "title": "Boscarol Hnos",
       "landing": "url",
-      "logo": "url",
       "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite",
-      "url": "https://deployprueba.vercel.app/",
       "enable": true,
       "show": true,
     }
@@ -127,10 +121,8 @@ export const resDetailProduct =
       "id": 1,
       "title": "Boscarol Hnos",
       "landing": "url",
-      "logo": "url",
       "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite",
-      "url": "https://deployprueba.vercel.app/",
       "enable": true,
       "show": true
     },
@@ -188,10 +180,8 @@ export const bodyUpd =
 
 title: "Boscarol Hnos",
 landing: "url444",
-logo: "url",
 info_header: "Landing page y administracion de vehiculos y clientes para un taller mecanico",
 info_body: "Esta pagina web fue creada primero como una landing page con react.js con vite",
-url: "https://deployprueba.vercel.app/",
 enable: false,
 to_show: true,
 }
@@ -199,9 +189,7 @@ export const wrongBody =
 {
 title: "Boscarol Hnos",
 landing: "url444",
-logo: "url",
 info_body: "Esta pagina web fue creada primero como una landing page con react.js con vite",
-url: "https://deployprueba.vercel.app/",
 enable: false,
 to_show: true
 }
@@ -210,10 +198,8 @@ export const productUpdResponse =
       "id": 1,
       "title": "Boscarol Hnos",
       "landing": "url444",
-      "logo": "url",
       "info_header": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "info_body": "Esta pagina web fue creada primero como una landing page con react.js con vite",
-      "url": "https://deployprueba.vercel.app/",
       "enable": false,
       "to_show": true,
       "deleteAt": false,

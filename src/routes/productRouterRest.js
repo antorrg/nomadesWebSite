@@ -12,5 +12,5 @@ productRouter.delete('/product/:id', auth.verifyToken, auth.requireRole([0,9]), 
 productRouter.post('/product/item/create', auth.verifyToken, auth.requireRole([0,2,9]), ctr.createItemController)
 productRouter.put('/product/item/:id', auth.verifyToken, auth.requireRole([0,2,9]), ctr.detailUpdController)
 productRouter.delete('/product/item/:id', auth.verifyToken, auth.requireRole([0,2,9]), ctr.delItemController)
-productRouter.get('/product', ctr.getProductHand)// experimental, debe borrarse
+productRouter.get('/product/:id', ctr.getProductById)// experimental, debe borrarse
 export default productRouter;

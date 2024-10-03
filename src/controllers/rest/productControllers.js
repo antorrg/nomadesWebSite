@@ -3,15 +3,13 @@ import serv from "../../services/productServices.js";
 
 export default {
   createController: eh.catchAsync(async (req, res) => {
-    const { title, landing, logo, info_header, info_body, url, items } =
+    const { title, landing,  info_header, info_body, items } =
       req.body;
     const response = await serv.createProduct(
       title,
       landing,
-      logo,
       info_header,
       info_body,
-      url,
       items
     );
     res.status(201).json(response);

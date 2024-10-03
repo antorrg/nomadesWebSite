@@ -1,4 +1,4 @@
-import {User, Product, Item, sequelize} from '../src/db.js'
+import {sequelize} from '../src/db.js'
 
 // Esta función inicializa la base de datos
 async function initializeDatabase() {

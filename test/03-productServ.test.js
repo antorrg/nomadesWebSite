@@ -10,14 +10,14 @@ describe('Funciones de Service/ product. CRUD basico completo de ambas tablas.',
     })
     describe('Funciones "createProduct" y "addNewItem" de creacion de producto e items', ()=>{
         it('Deberia crear un producto con items,', async()=>{
-            const {title, landing, logo, info_header, info_body, url, items}= help.bodyProduct;
-            const response = await prd.createProduct(title, landing, logo, info_header, info_body, url, items)
+            const {title, landing, info_header, info_body, items}= help.bodyProduct;
+            const response = await prd.createProduct(title, landing,  info_header, info_body, items)
             expect(response).toMatchObject(help.responseProduct)  
         })
         it('Deberia arrojar un error al intentar crear otro producto con el mismo titulo', async()=>{
-            const {title, landing, logo, info_header, info_body, url, items} = help.bodyProduct;
+            const {title, landing,  info_header, info_body,  items} = help.bodyProduct;
             try {
-               await prd.createProduct(title, landing, logo, info_header, info_body, url, items)
+               await prd.createProduct(title, landing, info_header, info_body, items)
             } catch (error) {
                 expect(error).toBeInstanceOf(Error);
                 expect(error.message).toBe('Este titulo ya existe');

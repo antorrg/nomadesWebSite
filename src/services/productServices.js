@@ -6,7 +6,7 @@ import help from "./helpers.js";
 const cache = new NodeCache({ stdTTL: 1800 }); // TTL (Time To Live) de media hora
 
 export default {
-createProduct : async (title1, landing1, logo1, info_header1, info_body1, url1, items1 ) => {
+createProduct : async (title1, landing1, info_header1, info_body1, items1 ) => {
     let transaction;
     try {
         transaction = await sequelize.transaction();
@@ -19,10 +19,8 @@ createProduct : async (title1, landing1, logo1, info_header1, info_body1, url1, 
         const newProduct = await Product.create({
             title:title1,
             landing: landing1,
-            logo:logo1,
             info_header:info_header1,
             info_body:info_body1,
-            url:url1,
         },{transaction});  
         const createdItems = await Promise.all(
             items1.map(async(item)=> {
@@ -108,14 +106,15 @@ updProduct : async (id, newData) => {
         if(!productFound){eh.throwError('Error inesperado, dato no hallado!',404)}
         const parsedData = {
             title: newData.title,
-            logo: newData.logo,
             landing: newData.landing,
             info_header: newData.info_header,
             info_body: newData.info_body,
-            url: newData.url,
             enable: Boolean(newData.enable),
             deleteAt: Boolean(newData.deleteAt)}
         const productUpd = await productFound.update(parsedData)
+        if (productUpd) {
+            cache.del('products');
+            }
         return productUpd;
     } catch (error) {throw error;}
 },

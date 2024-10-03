@@ -9,10 +9,8 @@ const cleaner = (cont, bl)=>{
         id:cont.id,
         title:cont.title,
         landing: cont.landing,
-        logo:cont.logo,
         infoHeader: cont.info_header,
         infoBody: cont.info_body,
-        url: cont.url,
         show: cont.to_show,
         enable: cont.enable,
     };
@@ -43,10 +41,8 @@ const dataEmptyPage = ()=> {
         id: false,
         title: 'No hay datos aun',
         landing: 'No hay datos aun',
-        logo: 'No hay datos aun',
         infoHeader: 'No hay datos aun',
         infoBody: 'No hay datos aun',
-        url: 'No hay datos aun',
         show: false,
         enable: false,
     }]

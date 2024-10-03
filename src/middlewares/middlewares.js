@@ -112,7 +112,7 @@ createProduct: eh.catchAsync((req, res, next) => {
         const newData = req.body;
         if (!newData || Object.keys(newData).length === 0) {eh.throwError('Faltan elementos!!', 400)}
         // Validar los campos requeridos en newData
-        const requiredFields = ['title', 'landing', 'logo', 'info_header', 'info_body', 'url'];
+        const requiredFields = ['title', 'landing', 'info_header', 'info_body',];
         const missingFields = requiredFields.filter(field => !(field in newData));
         if (missingFields.length > 0) {
              eh.throwError(`Parametros faltantes: ${missingFields.join(', ')}`, 400);
@@ -145,7 +145,7 @@ updProduct: eh.catchAsync((req, res, next)=>{
     if (id && !idIsNumber) {eh.throwError('Parametros no permitidos', 400)}
 
     if (!newData || Object.keys(newData).length === 0) {eh.throwError('Faltan elementos!!', 400)}
-    const requiredFields = ['title', 'landing', 'logo', 'info_header', 'info_body', 'url',];
+    const requiredFields = ['title', 'landing','info_header', 'info_body',];
     const missingFields = requiredFields.filter(field => !(field in newData));
     if (missingFields.length > 0) {eh.throwError(`Parametros faltantes: ${missingFields.join(', ')}`, 400)}
 

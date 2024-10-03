@@ -1,11 +1,9 @@
 
-  main {
-    height: 100vh;
-    height: -webkit-fill-available;
-    /* max-height: 100vh; */
-    overflow-x: auto;
-    /* overflow-y: hidden; */
+ 
+  .maxNavWidht {
+    max-width: 260px;
   }
+  
   .normalSidebar {
     min-height: 100vh;
     height:fit-content;
@@ -22,9 +20,6 @@
     background-color: #1a73e8; 
    }
   
-  .navbar {
-    margin-bottom: 20px;
-  }
   .bd-mode-toggle {
     z-index: 1500;
   }

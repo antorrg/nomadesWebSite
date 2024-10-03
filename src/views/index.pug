@@ -3,7 +3,7 @@ html(lang="es")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(name="description" content=land.infoHeader)
+    meta(name="description", content=land.info_header)
     meta(name="author" content="Antorrg. Antonio Ricardo Rodriguez Gramajo")
     title Nomades Cabañas de pastores
     link(href="/app-styles.css" rel="stylesheet")
@@ -29,7 +29,6 @@ html(lang="es")
           a.btn.btn-lg.btn-ligth.fw-bold.border-white.bg-white(href='/error') Vea más:
       footer.mt-auto.text-white-50.p12
          
-    
     section.carousel-section
       .container-fluid
         #myCarousel.carousel.slide(data-bs-ride="carousel")
@@ -52,6 +51,16 @@ html(lang="es")
             button.carousel-control-next(type="button", data-bs-target="#myCarousel", data-bs-slide="next")
               span.carousel-control-next-icon(aria-hidden="true")
               span.visually-hidden Next
-    section
-      img(src=land.image alt=land.title class="d-block w-100")
+
+    .container.marketing.mx-3
+      .row
+        each inf in info
+          .col-lg-5
+            img.img.img-fluid(src=inf.landing, alt="Placeholder")
+            h2.fw-normal= inf.title
+            p= inf.infoHeader
+            p
+              a.btn.btn-secondary(href=`/detalles/${inf.id}`) Ver detalles &raquo;
+    hr.featurette-divider
+  //-script(type="module" src='/js/bootstrap.bundle.min.js')
   script(type="module" src='/main.js')

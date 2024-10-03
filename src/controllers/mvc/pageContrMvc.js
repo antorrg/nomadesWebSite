@@ -12,21 +12,24 @@ export default {
     }),
     getProductById : eh.catchAsyncMVC(async(req, res)=>{
         const {id}=req.params;
-        const info = await sv.getById(id)
-        res.render('productDetail', info)
+        const infoG = await sv.getById(id)
+        const info = infoG.info
+        const items = infoG.items
+        res.render('productDetail', {info, items})
     }),
 
     getDetailItem  : eh.catchAsyncMVC(async(req, res)=>{
         const {id} = req.params
-        const info = await sv.getDetail(id)
-        res.render('viewItem', info)
+        const item = await sv.getDetail(id)
+        
+        res.render('viewItem', {item})
     }),
     contact  : eh.catchAsyncMVC(async(req, res)=>{
         res.render('contact')
 
     }),
     about : eh.catchAsyncMVC(async(req, res)=>{
-        res.render('about')
+        res.render('layouts/navbar')
     }),
     probar : eh.catchAsyncMVC(async(req, res)=>{
         res.render('error', { message: 'Probando el error', status: 400 })

@@ -262,10 +262,8 @@ const parsedInfo =
     "id": 1,
     "title": "Boscarol Hnos",
     "landing": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca1.webp?alt=media&token=f43e9da2-356b-4603-b0be-35cc5f4e6731",
-    "logo": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2FlogoBoscarol.webp?alt=media&token=5e66c6d9-5c73-4c95-a4f2-13777519885d",
     "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
     "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
-    "url": "https://deployprueba.vercel.app/",
     "show": true,
     "enable": true
   },
@@ -273,10 +271,8 @@ const parsedInfo =
       "id": 2,
       "title": "Boscarol Hnos",
       "landing": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca1.webp?alt=media&token=f43e9da2-356b-4603-b0be-35cc5f4e6731",
-      "logo": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2FlogoBoscarol.webp?alt=media&token=5e66c6d9-5c73-4c95-a4f2-13777519885d",
       "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
-      "url": "https://deployprueba.vercel.app/",
       "show": true,
       "enable": true
     },
@@ -284,10 +280,8 @@ const parsedInfo =
       "id": 3,
       "title": "Boscarol Hnos",
       "landing": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca1.webp?alt=media&token=f43e9da2-356b-4603-b0be-35cc5f4e6731",
-      "logo": "https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2FlogoBoscarol.webp?alt=media&token=5e66c6d9-5c73-4c95-a4f2-13777519885d",
       "infoHeader": "Landing page y administracion de vehiculos y clientes para un taller mecanico",
       "infoBody": "Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller",
-      "url": "https://deployprueba.vercel.app/",
       "show": true,
       "enable": true
     }
@@ -297,10 +291,8 @@ const parsedDetail = {
     id: 2,
     title: 'Boscarol Hnos',
     landing: 'https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2Fbosca1.webp?alt=media&token=f43e9da2-356b-4603-b0be-35cc5f4e6731',
-    logo: 'https://firebasestorage.googleapis.com/v0/b/misitioweb-d59d3.appspot.com/o/images%2FlogoBoscarol.webp?alt=media&token=5e66c6d9-5c73-4c95-a4f2-13777519885d',
     infoHeader: 'Landing page y administracion de vehiculos y clientes para un taller mecanico',
     infoBody: 'Esta pagina web fue creada primero como una landing page con react.js con vite y en el transcurso del desarrollo se implementó una base de datos e historial para el usuario asi como registro de usuarios, automotores y servicios para el taller',
-    url: 'https://deployprueba.vercel.app/',
     enable: true,
     show: true,
   },

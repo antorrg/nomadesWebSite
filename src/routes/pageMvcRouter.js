@@ -5,7 +5,7 @@ const pageRouter = express.Router()
 
 pageRouter.get('/', ctr.getLanding)
 
-pageRouter.get('/detalle/:id', ctr.getProductById)
+pageRouter.get('/detalles/:id', ctr.getProductById)
 
 pageRouter.get('/detalle/item/:id', ctr.getDetailItem)
 
