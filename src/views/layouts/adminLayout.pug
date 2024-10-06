@@ -1,0 +1,71 @@
+doctype html
+html(lang="es" data-bs-theme="auto")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="description" content="")
+    meta(name="author" content="Antorrg")
+    meta(name="generator" content="Hugo 0.122.0")
+    title Panel Admin
+  link(href="/styles.css" rel="stylesheet")
+  
+  body
+    main
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.d-lg-none
+    .container-fluid 
+      button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+    .d-lg-block.collapse
+    .d-flex.flex-column.flex-shrink-0.p-3.text-bg-dark.normalSidebar
+    a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none(href="/")
+      svg.bi.pe-none.me-2(width="40" height="32")
+        use(xlink:href="#bootstrap")
+      span.fs-4 Administrador
+    hr
+    ul.nav.nav-pills.flex-column.mb-auto
+      li
+        a.nav-link1.text-white(href="/admin")
+          svg.bi.pe-none.me-2(width="16" height="16")
+            use(xlink:href="#grid")
+          | Productos
+      li.nav-item
+        a.nav-link1.text-white(href="/admin/users" )
+          svg.bi.pe-none.me-2(width="16" height="16")
+            use(xlink:href="#home")
+          | Usuarios
+      li
+        a.nav-link1.text-white(href="#")
+          svg.bi.pe-none.me-2(width="16" height="16")
+            use(xlink:href="#table")
+          | Items
+      li
+        a.nav-link1.text-white(href="#")
+          svg.bi.pe-none.me-2(width="16" height="16")
+            use(xlink:href="#speedometer2")
+          | Configuraciones
+      li
+        a.nav-link1.text-white(href="#")
+          svg.bi.pe-none.me-2(width="16" height="16")
+            use(xlink:href="#people-circle")
+          | Nuevo proyecto
+    hr
+    .dropdown
+      a.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle(href="#" data-bs-toggle="dropdown" aria-expanded="false")
+        img.rounded-circle.me-2(src=info.picture alt="Not found" width="32" height="32")
+        strong= info.nickname
+      ul.dropdown-menu.dropdown-menu-dark.text-small.shadow
+        li
+          a.dropdown-item(href="/admin/project/") Nuevo proyecto...
+        li
+          a.dropdown-item(href="/admin/page/1") Settings
+        li
+          a.dropdown-item(href="#") Perfil
+        li
+          hr.dropdown-divider
+        li
+          a.dropdown-item(href="/logout" onclick="sessionCleaner()") Cerrar Sesion
+    .container.d-flex.flex-nowrap
+    .admin-main.flex-grow-1
+      block content
+  script(src="/main.js")
+  

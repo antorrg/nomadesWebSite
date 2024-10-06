@@ -1,0 +1,56 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Navbar Prueba
+    link(href="/app-styles.css" rel="stylesheet")
+    //-link(href="/styles/bootstrap.min.css" rel="stylesheet")
+  body
+    nav.navbar.navbar-dark.bg-dark(aria-label="Dark offcanvas navbar")
+      .container-fluid
+        .d-flex.flex-row.justify-content-start.align-items-center
+          button.navbar-toggler.me-3(type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+          a.navbar-brand.text-start(href="/") Administrador
+        .offcanvas.offcanvas-start.text-bg-dark(tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel")
+          .offcanvas-header
+            h5.offcanvas-title#offcanvasNavbarDarkLabel Administrador
+            button.btn-close.btn-close-white(type="button" data-bs-dismiss="offcanvas" aria-label="Close")
+          .offcanvas-body.admin-content
+            ul.navbar-nav.justify-content-start.flex-grow-1.ps-3
+              li.nav-item
+                a.nav-link.active.d-block.text-start.w-100(href="#") Productos
+              li.nav-item
+                a.nav-link.active.d-block.text-start.w-100(href="#") Usuarios
+              li.nav-item
+                a.nav-link.active.d-block.text-start.w-100(href="#") Ayuda
+              li.nav-item.dropdown
+                a.nav-link.active.dropdown-toggle(href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false") Portada
+                ul.dropdown-menu
+                  li
+                    a.dropdown-item(href="#") Portada...
+                  li
+                    a.dropdown-item(href="#") Videos
+                  hr.dropdown-divider
+                  li
+                    a.dropdown-item(href="#") Something else here
+            hr
+            .dropdown
+              a.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle(href="#" data-bs-toggle="dropdown" aria-expanded="false")
+                img.rounded-circle.me-2(src= userInfo.picture, alt="User image" width="32" height="32" )
+                strong= userInfo.nickname
+              ul.dropdown-menu.dropdown-menu-dark.text-small.shadow
+                li
+                  button.dropdown-item(type="button") Nuevo proyecto...
+                li
+                  button.dropdown-item(type="button") Settings
+                li
+                  button.dropdown-item(type="button") Perfil
+                hr.dropdown-divider
+                li
+                  a#logout-button.dropdown-item(href='#') Cerrar sesión
+    main.container.d-flex.flex-nowrap.w-80
+    .admin-main.flex-grow-1
+      block content
+  script(type="module" src="/main.js")

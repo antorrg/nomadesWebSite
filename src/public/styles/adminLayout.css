@@ -1,0 +1,78 @@
+
+ 
+  .maxNavWidht {
+    max-width: 260px;
+  }
+  
+  .normalSidebar {
+    min-height: 100vh;
+    height:fit-content;
+    width: 250px;
+  }
+  .nav-link:hover {
+    color: #0d6efd;
+    font-weight: bold; 
+    background-color: #1a73e8;
+    }
+   
+  .nav-link.active,
+  .nav-link.hover:active {
+    color: #fff;
+    background-color: #1a73e8; 
+   }
+  
+  .bd-mode-toggle {
+    z-index: 1500;
+  }
+
+  .bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important;
+  }
+  /* Hides the sidebar on small screens */
+  @media (max-width: 991.98px) {
+    #sidebar {
+      display: none;
+      
+    }
+  }
+  
+  @media (max-width: 991.98px) {
+    #sidebarMenu {
+      position: absolute;
+      top: 56px; /* Ajustar según la altura de la navbar */
+      left: 0;
+      width: 100vw;
+      /* height: calc(100vh - 56px); */
+      background-color: #212529;
+      z-index: 9999;
+      .normalSidebar {
+        min-height: 80vh;
+        height: auto; 
+      }
+       
+      
+    }
+  
+    .navbar-toggler {
+      margin-left: auto;
+    }
+  }
+  .spinner { /*spinner personalizado*/
+    margin: 30px auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 0.25rem solid #ccc; 
+    animation: spin 1s linear infinite;
+    border-bottom-color: #614ad3;
+  }
+
+  @keyframes spin {
+    from {
+    transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

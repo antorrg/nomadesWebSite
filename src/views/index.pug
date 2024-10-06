@@ -1,0 +1,66 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content=land.info_header)
+    meta(name="author" content="Antorrg. Antonio Ricardo Rodriguez Gramajo")
+    title Nomades Cabañas de pastores
+    link(href="/app-styles.css" rel="stylesheet")
+    link(rel='icon' href='/images/nomades2.png')
+  body
+    .min-vh-100.cover-container1.d-flex.w-100.p-3.mx-auto.flex-column(style=`background-image: url('${land.image || 'https://scontent.faep9-1.fna.fbcdn.net/v/t39.30808-6/273706860_2931088370514441_4950906474272199784_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=X53bAmSG_lYQ7kNvgFuarmz&_nc_ht=scontent.faep9-1.fna&_nc_gid=ApSLyvJxyybnTnjfCJFK6dw&oh=00_AYDZumEmiq_mR9bE2K7gO1kT-BBpxANblpaBPWSdHsPhTw&oe=66ECCA4B'}')`)
+      header.mb-auto
+          div
+            h3.float-md-start.mb-0.caption-nav.colon-link
+              | Nomades
+              a.nav-link(href="/login") : 
+              |  Cabañas de Pastores
+            nav.nav.nav-masthead.justify-content-center.float-md-end.caption-nav
+              a.nav-link.fw-bold.py-1.px-0.active(aria-current='page' href='/') Home
+              a.nav-link.fw-bold.py-1.px-0.active(href='#') Login
+              a.nav-link.fw-bold.py-1.px-0.active(href='/contacto') Contacto
+              a.nav-link.fw-bold.py-1.px-0.active(href='/acerca') Acerca de:
+      section.px-3
+      .caption-title
+        h1= land.title
+        p.cover-p= land.description
+        p.lead
+          a.btn.btn-lg.btn-ligth.fw-bold.border-white.bg-white(href='/error') Vea más:
+      footer.mt-auto.text-white-50.p12
+         
+    section.carousel-section
+      .container-fluid
+        #myCarousel.carousel.slide(data-bs-ride="carousel")
+            .carousel-indicators
+              each val, index in info
+                button(type="button", data-bs-target="#myCarousel", data-bs-slide-to=index, class=(index === 0 ? 'active' : ''), aria-current=(index === 0 ? 'true' : ''), aria-label=`Slide ${index + 1}`)
+            .carousel-inner
+              each val, index in info
+                .carousel-item(class=(index === 0 ? 'active' : ''))
+                  img(src=val.landing, class="d-block w-100", alt=val.title)
+                  .container
+                    .carousel-caption(class=(index === 0 ? 'text-start' : (index === info.length - 1 ? 'text-end' : '')))
+                      h1= val.title
+                      p= val.infoHeader
+                      p
+                        a.btn.btn-lg.btn-secondary(href=`/detalles/${val.id}` target="_blank") Visite el sitio
+                  button.carousel-control-prev(type="button", data-bs-target="#myCarousel", data-bs-slide="prev")
+                    span.carousel-control-prev-icon(aria-hidden="true")
+                    span.visually-hidden Previous
+                  button.carousel-control-next(type="button", data-bs-target="#myCarousel", data-bs-slide="next")
+                    span.carousel-control-next-icon(aria-hidden="true")
+                    span.visually-hidden Next
+
+    .container.marketing.mx-3
+      .row
+        each inf in info
+          .col-lg-5
+            img.img.img-fluid(src=inf.landing, alt="Placeholder")
+            h2.fw-normal= inf.title
+            p= inf.infoHeader
+            p
+              a.btn.btn-secondary(href=`/detalles/${inf.id}`) Ver detalles &raquo;
+    hr.featurette-divider
+  //-script(type="module" src='/js/bootstrap.bundle.min.js')
+  script(type="module" src='/main.js')

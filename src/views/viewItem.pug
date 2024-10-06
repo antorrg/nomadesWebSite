@@ -1,0 +1,38 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description", content="Profundiza en nuestros productos")
+    meta(name="author", content="Antorrg. Antonio Ricardo Rodriguez Gramajo")
+    title Detalle proyecto
+    link(rel="icon", href="/images/favicon.png")
+    link(href="/app-styles.css" rel="stylesheet")
+    style.
+      .modal-custom {
+        background-color rgba(0, 0, 0, 0.03);
+      }
+      .modal-dialog-custom {
+        max-width 100%; /* Ajusta este valor según necesites */
+      }
+      .modal-content {
+        background-color #f8f9fa;
+        overflow hidden;
+      }
+     .modal-body img {
+        max-width: 100%;
+        height: auto;
+        max-height: 100vh; /* Ajusta la altura máxima según necesites */
+        margin: 0 auto; /* Centra la imagen horizontalmente */
+        display: block; /* Evita espacios innecesarios debajo de la imagen */
+      }
+  body
+    .modal.modal-tour.position-static.d-block.modal-custom.py-5(tabindex="-1", role="dialog", id="modalTour")
+      .modal-dialog.modal-dialog-centered.modal-xl
+        .modal-content
+          .modal-body.p-5.text-center
+            img.d-block.mx-auto.mb-4(src=`${item.img}`, alt="image not found")
+            p.text-muted=`${item.text}`
+            a.btn.btn-lg.btn-secondary.mt-3.mx-auto.w-25(href=`/detalles/${item.ProductId}`) Cerrar
+  //-script(type="module" src='/js/bootstrap.bundle.min.js')
+  script(type="module" src='/main.js')
