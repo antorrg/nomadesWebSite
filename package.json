@@ -36,6 +36,7 @@
     "postgres": "^3.4.4",
     "pug": "^3.0.3",
     "sequelize": "^6.37.3",
+    "sweetalert2": "^11.14.1",
     "uuid": "^10.0.0"
   },
   "devDependencies": {

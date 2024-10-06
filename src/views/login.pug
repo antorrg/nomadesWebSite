@@ -1,0 +1,25 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Login
+        link(href="/app-styles.css" rel="stylesheet")
+        link(rel='icon' href='/images/nomades2.png')
+    body
+      .imageBack 
+        .coverBack 
+          .container-md.modal-content.colorBack.loginContainer.rounded-4.shadow 
+            form.form-signin.m-auto.p-3#loginForm(method="POST", action="/login")
+              .d-flex.justify-content-between.align-items-center
+                img.mb-4(src="/images/vite.svg" alt="" width="72" height="57")
+                a.btn-close( href='/' )
+              h1.h3.mb-3.fw-normal Inicie sesion
+              .form-floating
+                input.form-control(type="email", id="floatingInput", placeholder="name@example.com", name="email") 
+                label(htmlFor='floatingInput') Email address
+              .form-floating.d-flex.justify-content-between.align-items-center
+                input.form-control(type=showPassword ? 'text' : 'password', id="floatingPassword", placeholder="Password", name="password")
+                label(htmlFor="floatingPassword") Password 
+              button.btn.btn-primary.w-100.py-2.mb-3(type="submit") Ingresar
+    script(type="module" src='/main.js')
